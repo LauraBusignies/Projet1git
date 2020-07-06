@@ -27,7 +27,7 @@ def inpunt_validation():
             return adventurer_number
 
 # Définir si c'est moins ou plus 
-def game(adventurer_number, counter, mystery_number, total_counter):
+def game(adventurer_number, counter, mystery_number, total_counter, try_number):
 
     while adventurer_number != mystery_number and counter != try_number :
         adventurer_number = inpunt_validation()
@@ -53,7 +53,7 @@ def victory_or_defeat(victory):
         print()
         print(f"Perdu ! Tu as utilisé tes {try_number} essaies. Tu dois recommencer ! 凸(^_^)凸")
         victory = False
-        time.sleep(2.0)
+        time.sleep(3.0)
     return victory
 
 # Clear la console
@@ -102,10 +102,11 @@ if __name__ == '__main__' :
                 time.sleep(1.0)
                 print(f"Tu auras {try_number} essaies !\n")
             
-            adventurer_number, counter, total_counter = game(adventurer_number, counter, mystery_number, total_counter)
+            adventurer_number, counter, total_counter = game(adventurer_number, counter, mystery_number, total_counter, try_number)
             victory = victory_or_defeat(victory)
             if victory == False :
                 counter_game = 0
+                counter = 0
                 break 
     print()
     print(f"BRAVO ! tu as gagné les trois manches avec {total_counter} essaies ! Tu as bien mérité cette clé 🔑")
