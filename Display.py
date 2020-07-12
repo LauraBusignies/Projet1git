@@ -1,62 +1,40 @@
-# coding: utf-8
 import Variable
-import map2
+import message
+import Utilities
 
-# color_code = {"♣" : "\033[33m"}    
-liste_color = list(Variable.color_character)
-
-displayMap = map2.MapInAList
-
-# with open("Map", "r", encoding = "utf-8") as map : 
-#     displayMap = [line for line in map]
-
-def addColorToAnEl(element):
-    element = Variable.color_character[element]["color"]
-    return element
-
-def map(displayMap):
-    y = 26
-    x = 84
+def map1():
+    with open("Map", "r", encoding = "utf-8") as map : 
+        displayMap = [line for line in map]
+    Variable.liste_Map = displayMap
+    if len(Variable.positionObjet) ==0 :
+        Utilities.NourritureObjet()
     axeY = 0
+    # displayMap = Variable.liste_Map
     for line in displayMap:
         axeX = 0
-        linePrinted = ""
         for caractere in line :
-            # if caractere in Variable.color_character:
-            #     caractere = addColorToAnEl(caractere)
-            if caractere == "♣":
-                caractere = "\033[33m♣\033[0m"
-            # elif caractere == "■" :
-            #     caractere = "\033[32m■\033[0m"
-
-            # caractere = Variable.color_character[caractere]["color"]
-            if y == axeY and x == axeX:
-                caractere = 0
-            linePrinted = f"{linePrinted}{caractere}"
+            compteur = 0
+            for loop in range(len(Variable.positionObjet)//2):
+                if axeY == Variable.positionObjet[compteur] and axeX == Variable.positionObjet[compteur+1] :
+                    caractere = "○"
+                compteur += 2
+            # if caractere in Variable.color_character :
+            #      caractere = f'{Variable.color_character[caractere]["colorS"]}{Variable.color_character[caractere]["image"]}{Variable.color_character[caractere]["colorE"]}'
+            if Variable.positionJoueur[0] == axeY and Variable.positionJoueur[1] == axeX:
+                Variable.ancienCaractere = caractere
+                if caractere == "γ":
+                    caractere = "γ"
+                elif caractere == "↑":
+                    caractere = "↑"
+                elif caractere == "♣":
+                    caractere = "♣"
+                else:
+                    caractere = "☺"
             axeX += 1
-        print(linePrinted)
+            print(caractere, end="")
         axeY += 1
-
-map(displayMap)
-
-def entrerDeplacement():
-
-    Variable.nombre = 1
-    entrer = input("Entrez une instruction  : ")
-    if entrer != "" :
-        Variable.deplacement = entrer[0]
-    if len(entrer) > 1 :
-        Variable.nombre = entrer[1:]
-    listeDeplacement= ["z", "q","s","d"]
-    while Variable.deplacement not in listeDeplacement :
-            print("Veuillez saisir une lettre entre Z, Q , S, D. \n Z pour monter \n S pour descendre \n D pour aller a droite \n Q pour aller a gauche")
-            entrer = (input("Entrez une instruction : ")).lower()
-            print()
-            if entrer != "" :
-                Variable.deplacement = entrer[0]
-            if len(entrer) > 1 :
-                Variable.nombre = entrer[1:]
-
-
-# def clear():
-#     os.system('cls') #pour Windows
+    print()
+    print(Variable.ancienCaractere)
+    message.arbre()
+    Utilities.afterClear()
+    message.ObjetSol()
