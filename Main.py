@@ -10,7 +10,5 @@ if __name__ == "__main__":
 
     while Variable.positionJoueur[0] != 0 :
         Display.map1()
-        print(Variable.positionObjet)
-        Utilities.entrerDeplacement()
+        DeplacementJ.entrerDeplacement()
         DeplacementJ.ZQSD()
-        print(Variable.ancienCaractere)

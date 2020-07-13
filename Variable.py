@@ -3,11 +3,17 @@ deplacement = ""
 nombre = 0
 liste_Map = []
 positionJoueur = [25, 80]
-compteurS = 0
+compteurStock = 0
 ancienCaractere = ""
-listeObjet = ["Ananas", "Banane", "Mangue"]
-positionObjet = []
-
+listeArbre = ["γ", "↑", "♣"]
+positionAnanas = []
+positionBanane = []
+positionMangue = []
+positionSolAnanas = []
+positionSolBanane = []
+positionSolMangue = []
+validationPositionFruit = False
+validationPositionSolFruit = False
 vitalité = {
     "Fatigue" : 100,
     "Hydratation" : 100,
@@ -18,23 +24,15 @@ color_character = {
     " " : {
         "name" : "rien" , 
         "image" : " ",
-        "colorS" : "\033[33m",
+        "colorS" : "\u001b[38;5;0mM",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : "C'est trop risqué d'aller sur les falaise !"        
     },
-    "\\" : {
-        "name" : "montagne" ,
-        "image" : "M",
-        "colorS" : "\033[33m",
-        "colorE" : "\033[0m",
-        "CanWalk" : False,
-        "Erreur" : "C'est trop risqué d'escalader ses montagnes !"        
-    },
-    "/" : {
+    "M" : {
         "name" : "montagne" , 
         "image" : "M",
-        "colorS" : "\033[33m",
+        "colorS" : "\u001b[38;5;58mM",
         "colorE" : "\033[0m",
         "CanWalk" : False,
         "Erreur" : "C'est trop risqué d'escalader ses montagnes !"        
@@ -42,7 +40,7 @@ color_character = {
     "≈" : {
         "name" : "riviere" , 
         "image" : "≈",
-        "colorS" : "\033[33m≈",
+        "colorS" : "\u001b[38;5;39m≈",
         "colorE" : "\033[0m",
         "CanWalk" : False,
         "Erreur" : "Trop de courant pour aller dans cette rivière, chercher un autre moyen de passer"        
@@ -50,7 +48,7 @@ color_character = {
     "░" : {        
         "name" : "sable" , 
         "image" : "░",
-        "colorS" : "\033[33m░",
+        "colorS" : "\u001b[38;5;226m░",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : None       
@@ -58,7 +56,7 @@ color_character = {
     "▒" : {
         "name" : "mer" , 
         "image" : "▒",
-        "colorS" : "\033[33m▒",
+        "colorS" : "\u001b[38;5;20m▒",
         "colorE" : "\033[0m",  
         "CanWalk" : False,
         "Erreur" : "Ca va pas ! Tu veux te noyer !"
@@ -66,7 +64,7 @@ color_character = {
     "█" : {
         "name" : "falaise" , 
         "image" : "█",
-        "colorS" : "\033[33m█",
+        "colorS" : "\u001b[38;5;240m█",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "C'est trop risqué d'aller sur les falaise !"
@@ -74,7 +72,7 @@ color_character = {
     "║" : {
         "name" : "Coté porte" , 
         "image" : "║",
-        "colorS" : "\033[33m║",
+        "colorS" : "\u001b[38;5;196m║",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -82,7 +80,7 @@ color_character = {
     "╔" :{
         "name" : "coin porte" , 
         "image" : "╔",
-        "colorS" : "\033[33m╔",
+        "colorS" : "\u001b[38;5;196m╔",
         "colorE" : "\033[0m",
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -90,7 +88,7 @@ color_character = {
     "═" :{
         "name" : "haut porte" , 
         "image" : "═",
-        "colorS" : "\033[33m═",
+        "colorS" : "\u001b[38;5;196m═",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -98,7 +96,7 @@ color_character = {
     "╗" :{
         "name" : "coin porte" , 
         "image" : "╗",
-        "colorS" : "\033[33m╗",
+        "colorS" : "\u001b[38;5;196m╗",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -106,7 +104,7 @@ color_character = {
     "■" :{
         "name" : "rocher" , 
         "image" : "■",
-        "colorS" : "\033[33m■",
+        "colorS" : "\u001b[38;5;8m■",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Tu est pieds nue !"
@@ -114,7 +112,7 @@ color_character = {
     "♪" :{
         "name" : "clé" , 
         "image" : "♪",
-        "colorS" : "\033[33m♪",
+        "colorS" : "\u001b[38;5;226m♪",
         "colorE" : "\033[0m",  
         "CanWalk" : True,
         "Erreur" : None
@@ -122,7 +120,7 @@ color_character = {
     "γ" :{
         "name" : "arbre" , 
         "image" : "γ",
-        "colorS" : "\033[33mγ",
+        "colorS" : "\u001b[38;5;64mγ",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : None
@@ -130,7 +128,7 @@ color_character = {
     "♣" :{
         "name" : "arbre" , 
         "image" : "♣",
-        "colorS" : "\033[33m♣",
+        "colorS" : "\u001b[38;5;46m♣",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : None
@@ -138,7 +136,7 @@ color_character = {
     "↑" :{
         "name" : "arbre" , 
         "image" : "↑",
-        "colorS" : "\033[33m↑",
+        "colorS" : "\u001b[38;5;76m↑",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : None
@@ -146,7 +144,7 @@ color_character = {
     "_" :{
         "name" : "bordure" , 
         "image" : "—",
-        "colorS" : "\033[33m—",
+        "colorS" : "\u001b[38;5;120m—",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : None
@@ -154,7 +152,7 @@ color_character = {
     "|" :{
         "name" : "bordure" , 
         "image" : "|",
-        "colorS" : "\033[33m|",
+        "colorS" : "\u001b[38;5;120m|",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Quelque chose bloque.."
@@ -162,7 +160,7 @@ color_character = {
     "○" :{
         "name" : "bordure" , 
         "image" : "○",
-        "colorS" : "\033[33m○",
+        "colorS" : "\u001b[38;5;120m○",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : "Tu es sur un objet !"
