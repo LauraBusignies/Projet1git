@@ -2,7 +2,7 @@
 deplacement = ""
 nombre = 0
 liste_Map = []
-positionJoueur = [25, 80]
+positionJoueur = [15, 65]
 compteurStock = 0
 ancienCaractere = ""
 listeArbre = ["γ", "↑", "♣"]
@@ -13,18 +13,33 @@ positionSolAnanas = []
 positionSolBanane = []
 positionSolMangue = []
 validationPositionFruit = False
-validationPositionSolFruit = False
+validationPositionSol = False
+objetRamasser = ""
+
+contenuInventaire = []
+lettre = ""
+fruit = ""
+checkActionSac = False
+
 vitalité = {
-    "Fatigue" : 100,
-    "Hydratation" : 100,
-    "Satiété" : 100
-    }
+    "Fatigue" :{
+        "stock" : 100,
+        "-" : 3
+    },
+    "Hydratation" :{
+        "stock" : 100,
+        "-" : 2
+    },
+    "Satiété" :{
+        "stock" : 100,
+        "-" : 2
+    }}
 
 color_character = {
     " " : {
         "name" : "rien" , 
         "image" : " ",
-        "colorS" : "\u001b[38;5;0mM",
+        "colorS" : "\u001b[38;5;0m ",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : "C'est trop risqué d'aller sur les falaise !"        
@@ -171,25 +186,29 @@ sac_a_dos = {
     "Chaussure" :{ 
         "nom" : "Chaussure",
         "nombre" : 0,
+        "+" : None ,
         "Stockage" : None,
         "StockageM" : None,
         "Utilité" : "Marcher sur les cailloux",
-        "Ramassage": "Vous avez trouvé des chaussures",
-        "Jettable" : True,
-        "message" : "Tu viens de jetter tes chaussures, tu en auras surement besoin !",
-        "sac" : False
+        "Ramassage": "Va savoir ..",
+        "message": "Vous avez jettez vos chaussures",
+        "positionY" : None,
+        "positionX" : None
+
                 },
 
     "Bouteille" :{ 
         "nom" : "Bouteille",
         "nombre" : 1,
-        "StockageA" : 0,
+        "+" : 20,
+        "StockageA" : 100,
         "StockageM" : 100,
-        "Utilité" : "S'hydrater",
-        "Ramassage": "Vous avez trouvé des chaussures",
-        "Jettable" : False,
-        "message" : "Cette bouteille est vital !",
-        "sac" : False
+        "Utilité" : "Hydratation",
+        "Ramassage": "Vous avez trouvé une bouteille d'eau",
+        "message": "Oula vous avez jetter votre bouteille, vous allez mourir de soif !",
+        "positionY" : None,
+        "positionX" : None
+
                 },
     "Couteau" :{ 
         "nom" : "Couteau",
@@ -197,42 +216,47 @@ sac_a_dos = {
         "Stockage" : None,
         "StockageM" : None,
         "Utilité" : "A toi de trouver",
-        "Ramassage": "Vous avez trouvé des chaussures",
-        "Jettable" : False,
-        "message" : "Ce couteau te servira bien a quelque chose !",
-        "sac" : False
+        "Ramassage": "Vous avez trouvé un couteau",
+        "message": "Vous avez jettez votre couteau, vous allez en avoir besoin",
+        "positionY" : None,
+        "positionX" : None
+
             },
     "Banane" :{
         "nom" : "Banane",
-        "nombre" : 0,
-        "Stockage" : 2,
-        "StockageM" : 100,
+        "nombre" : 2,
+        "+" : 14,        
+        "Stockage" : None,
+        "StockageM" : None,
         "Utilité" : "Satiété",
         "Ramassage": "Vous avez trouvé une Banane, miam !",
-        "Jettable" : True,
-        "message" : "Vous avez jetté une Banane !",
-        "sac" : False
+        "message": "Vous avez jettez une Banane",
+        "positionY" : None,
+        "positionX" : None
+
 },
     "Ananas" :{ 
         "nom" : "Ananas",
         "nombre" : 1,
-        "Stockage" : 10,
-        "StockageM" : 100,
+        "+" : 20,
+        "Stockage" : None,
+        "StockageM" : None,
         "Utilité" : "Satiété",
         "Ramassage": "Vous avez trouvé un Ananas, miam !",
-        "Jettable" : True,
-        "message" : "Vous avez jetté une Ananas !",
-        "sac" : False
+        "message": "Vous avez jettez un Ananas",
+        "positionY" : None,
+        "positionX" : None
 },
     "Mangue" :{ 
         "nom" : "Mangue",
-        "nombre" : 1,
-        "Stockage" : 7,
-        "StockageM" : 100,
+        "nombre" : 3,
+        "+" : 25,
+        "Stockage" : None,
+        "StockageM" : None,
         "Utilité" : "Satiété",
         "Ramassage": "Vous avez trouvé un Mangue, miam !",
-        "Jettable" : True,
-        "message" : "Vous avez jetté une Mangue !",
-        "sac" : False
+        "message": "Vous avez jettez une Mangue",
+        "positionY" : None,
+        "positionX" : None
 }
 }

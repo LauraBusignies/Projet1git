@@ -1,3 +1,4 @@
+
 import random
 import Variable
 
@@ -66,23 +67,26 @@ def verificationPositionArbre() :
 
 def verificationPositionObjet() :
 
-    Variable.validationPositionSolFruit = False
+    Variable.validationPositionSol = False
     compteur = 0
     for loop in range(len(Variable.positionSolAnanas)//2):
         if Variable.positionJoueur[0] == Variable.positionSolAnanas[compteur] and Variable.positionJoueur[1] == Variable.positionSolAnanas[compteur+1] :
-            Variable.validationPositionSolFruit = True
+            Variable.validationPositionSol = True
+            Variable.objetRamasser = "Ananas"
         compteur += 2
 
     compteur = 0
     for loop in range(len(Variable.positionSolBanane)//2):
         if Variable.positionJoueur[0] == Variable.positionSolBanane[compteur] and Variable.positionJoueur[1] == Variable.positionSolBanane[compteur+1] :
-            Variable.validationPositionSolFruit = True
+            Variable.validationPositionSol = True
+            Variable.objetRamasser = "Banane"
         compteur += 2
 
     compteur = 0
     for loop in range(len(Variable.positionSolMangue)//2):
         if Variable.positionJoueur[0] == Variable.positionSolMangue[compteur] and Variable.positionJoueur[1] == Variable.positionSolMangue[compteur+1] :
-            Variable.validationPositionSolFruit = True
+            Variable.objetRamasser = "Mangue"
+            Variable.validationPositionSol = True
         compteur += 2
 #__________________________________________________________________________________________________________________________
 
@@ -123,7 +127,8 @@ def supprimerPositionArbreMangue():
         compteur += 2
 #_____________________________________________________________________________________________________________________________
 
-def supprimerPositionSolAnanas():
+def supprimerObjet():
+
     compteur = 0
     for i in (Variable.positionSolAnanas):
         if Variable.positionJoueur[0] == Variable.positionSolAnanas[compteur] and Variable.positionJoueur[1] == Variable.positionSolAnanas[compteur+1] :
@@ -132,7 +137,6 @@ def supprimerPositionSolAnanas():
             break
         compteur += 1
         
-def supprimerPositionSolBanane():
     compteur = 0
     for i in (Variable.positionSolBanane):
         if Variable.positionJoueur[0] == Variable.positionSolBanane[compteur] and Variable.positionJoueur[1] == Variable.positionSolBanane[compteur+1] :
@@ -141,7 +145,6 @@ def supprimerPositionSolBanane():
             break
         compteur += 1
 
-def supprimerPositionSolMangue():
     compteur = 0
     for i in (Variable.positionSolMangue):
         if Variable.positionJoueur[0] == Variable.positionSolMangue[compteur] and Variable.positionJoueur[1] == Variable.positionSolMangue[compteur+1] :

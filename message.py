@@ -38,9 +38,11 @@ def ramasserFruit():
     fruit = ""
     if Variable.deplacement == "r" :
         Nourriture.verificationPositionObjet()
-        if Variable.deplacement == "r" and Variable.validationPositionSolFruit == False :
+        Utilities.verificationObjetSol()
+        if Variable.deplacement == "r" and Variable.validationPositionSol == False :
             print("Il n'y a rien a ramasser")
         else : 
+            print(Variable.sac_a_dos[Variable.objetRamasser]["Ramassage"])
             decision = input("Souhaitez vous mettre cette objet dans votre sac ? ").lower()
             while decision != "oui" and decision != "non" :
                 decision = input("Veuillez choisir oui ou non ")
@@ -57,22 +59,51 @@ def ramasserFruit():
                         fruit = "Mangue"
                     Variable.sac_a_dos[fruit]['nombre'] += 1
                     print(Variable.sac_a_dos[fruit]['nombre'])
-                    if fruit == "Ananas":
-                        Nourriture.supprimerPositionSolAnanas()
-                    elif fruit == "Banane":
-                        Nourriture.supprimerPositionSolBanane()
-                    else :
-                        Nourriture.supprimerPositionSolMangue()
-
-# def ObjetSac():
-#     if Variable.deplacement == "o" :
+                    Nourriture.supprimerObjet()
 
 
-def supprimerObjet():
-    if Variable.deplacement == "o":
+#__________________________________________________________________________________________________________________________
+
+
+def displaySac():
+
+    Utilities.clear()
+    Variable.contenuInventaire = []
+    def VisuelSac(contenuSac):
+        for k in Variable.sac_a_dos:
+            if Variable.sac_a_dos[k]['nombre'] > 0 :
+                contenuSac.append(f"{Variable.sac_a_dos[k]['nom']} * {Variable.sac_a_dos[k]['nombre']}")
+                Variable.contenuInventaire.append(Variable.sac_a_dos[k]['nom'])
+        return contenuSac
+    
+    contenuSac = []
+    contenuSac = VisuelSac(contenuSac)
+
+    print("\n              ▓▓▓▓▓▓▓▓▓▓▓▓▓")
+    print("             ▓▓           ▓▓")
+    print("            ▓▓             ▓▓")
+    print("  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓")
+    print(" ▓▓                                 ▓▓")
+
+    for i in range(0, len(contenuSac)):
+        espace = 23 - len(contenuSac[i])
+        espace = " " * espace
+        print(f" ▓▓          {contenuSac[i]}{espace}▓▓")
+    print(" ▓▓                                 ▓▓")
+    print(f"  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n")
+
+    listeAction =["l", "u", "d"]
+    action =input("Que veux tu faire ? Sortir du sac -> L / Utiliser un objet de ton sac -> U + NomObjet / Jetter un objet de ton sac -> D + objet \n").lower()
+    Variable.checkActionSac = False
+    Utilities.checkAction(action, listeAction)
+    while Variable.checkActionSac == False :
+        action = input("L"" pour leave le sac, U + Objet pour l'utiliser, D + Objet pour le jetter ")
+        Utilities.checkAction(action, listeAction)
+    if Variable.lettre == "l" :
         Utilities.clear()
-        Utilities.displaySac()
-
+    elif Variable.lettre == "d":
+        Utilities.deleteObjet()
+        
 
 
 

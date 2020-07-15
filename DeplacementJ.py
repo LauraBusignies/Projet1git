@@ -3,6 +3,7 @@ import time
 import os
 import random
 import Utilities
+import message
 
 
 def clear():
@@ -34,9 +35,10 @@ def ZQSD ():
         if Variable.liste_Map[Variable.positionJoueur[0]-1][Variable.positionJoueur[1]] in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
-                time.sleep(2.0)
+                time.sleep(1.5)
             else :
                 Variable.positionJoueur[0] -= 1
+                Utilities.vitalitéJoeur()
                 clear()
 
 
@@ -45,9 +47,10 @@ def ZQSD ():
         if Variable.liste_Map[Variable.positionJoueur[0]+1][Variable.positionJoueur[1]] in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
-                time.sleep(2.0)
+                time.sleep(1.5)
             else :
                 Variable.positionJoueur[0] += 1
+                Utilities.vitalitéJoeur()
                 clear()
 
 
@@ -56,9 +59,10 @@ def ZQSD ():
         if Variable.liste_Map[Variable.positionJoueur[0]][Variable.positionJoueur[1]+1] in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
-                time.sleep(2.0)
+                time.sleep(1.5)
             else :
                 Variable.positionJoueur[1] += 1
+                Utilities.vitalitéJoeur()
                 clear()
 
 
@@ -67,10 +71,11 @@ def ZQSD ():
         if Variable.liste_Map[Variable.positionJoueur[0]][Variable.positionJoueur[1]-1] in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
-                time.sleep(2.0)
+                time.sleep(1.5)
             else :
                 Variable.positionJoueur[1] -= 1
+                Utilities.vitalitéJoeur()
                 clear()
+            
     if Variable.deplacement == "o":
-        Utilities.displaySac()
-
+        message.displaySac()
