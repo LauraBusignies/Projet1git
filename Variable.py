@@ -5,10 +5,11 @@ liste_Map = []
 positionJoueur = [15, 65]
 compteurStock = 0
 ancienCaractere = ""
-listeArbre = ["γ", "↑", "♣"]
-positionAnanas = []
-positionBanane = []
-positionMangue = []
+listeArbre = ["\u001b[38;5;64mγ\033[0m", "\u001b[38;5;76m↑\033[0m", "\u001b[38;5;46m♣\033[0m"]
+listeFruit = ["Ananas", "Banane", "Mangue"]
+positionAbreAnanas = []
+positionAbreBanane = []
+positionAbreMangue = []
 positionSolAnanas = []
 positionSolBanane = []
 positionSolMangue = []
@@ -249,7 +250,7 @@ sac_a_dos = {
 },
     "Mangue" :{ 
         "nom" : "Mangue",
-        "nombre" : 3,
+        "nombre" : 5,
         "+" : 25,
         "Stockage" : None,
         "StockageM" : None,

@@ -66,21 +66,21 @@ def vitalitéJoeur() :
 #__________________________________________________________________________________________________________________________
 
 def caracterePosition(axeY, axeX, caractere):
-    if len(Variable.positionAnanas) > 1 :
+    if len(Variable.positionAbreAnanas) > 1 :
         compteur = 0
         for loop in range(len(Variable.positionSolAnanas)//2):
-            if axeY == Variable.positionSolAnanas[compteur] and axeX == Variable.positionSolAnanas[compteur+1] :
+            if axeY == Variable.positionSolAnanas[compteur] and axeX == Variable.positionSolAnanas[compteur+1]:
                 caractere = "×"
             compteur +=2
 
-    if len(Variable.positionBanane) > 1 :
+    if len(Variable.positionAbreBanane) > 1 :
         compteur = 0
         for loop in range(len(Variable.positionSolBanane)//2):
             if axeY == Variable.positionSolBanane[compteur] and axeX == Variable.positionSolBanane[compteur+1] :
                 caractere = "×"
             compteur +=2
 
-    if len(Variable.positionMangue) > 1 :
+    if len(Variable.positionAbreMangue) > 1 :
         compteur = 0
         for loop in range(len(Variable.positionSolMangue)//2):
             if axeY == Variable.positionSolMangue[compteur] and axeX == Variable.positionSolMangue[compteur+1] :

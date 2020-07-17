@@ -5,7 +5,7 @@ import Display
 import Nourriture
 
 def arbre ():
-    if Variable.ancienCaractere == "γ" or Variable.ancienCaractere == "↑" or Variable.ancienCaractere == "♣": 
+    if Variable.ancienCaractere == "\u001b[38;5;64mγ\033[0m" or Variable.ancienCaractere == "\u001b[38;5;76m↑\033[0m" or Variable.ancienCaractere == "\u001b[38;5;46m♣\033[0m": 
         print("Vous êtes cachez sous un arbres")
         print("Bougez le avec ""b"", un fruit tombera peut etre")
 
@@ -17,10 +17,10 @@ def bougerArbre():
     if Variable.deplacement == "b":
         if Variable.deplacement == "b" and Variable.validationPositionFruit == True:
             
-            if Variable.ancienCaractere == "γ" :
+            if Variable.ancienCaractere == "\u001b[38;5;64mγ\033[0m" :
                 print(" Oh ! Un ananas est tomber, appui sur R pour le ramasser")
                 Nourriture.supprimerPositionArbreAnanas()
-            elif Variable.ancienCaractere == "↑" :
+            elif Variable.ancienCaractere == "\u001b[38;5;76m↑\033[0m" :
                 print(" Oh ! Une banane est tomber, appui sur R pour la ramasser")
                 Nourriture.supprimerPositionArbreBanane()
             else :
@@ -35,7 +35,6 @@ def bougerArbre():
 
 def ramasserFruit():
     
-    fruit = ""
     if Variable.deplacement == "r" :
         Nourriture.verificationPositionObjet()
         Utilities.verificationObjetSol()
@@ -51,15 +50,12 @@ def ramasserFruit():
                 if Variable.compteurStock >= 10 :
                     print("Vous ne pouvez pas le prendre, votre sac à dos est pleins")
                 else :
-                    if Variable.ancienCaractere == "γ":
-                        fruit = "Ananas"
-                    elif Variable.ancienCaractere == "↑" :
-                        fruit = "Banane"
-                    else:
-                        fruit = "Mangue"
-                    Variable.sac_a_dos[fruit]['nombre'] += 1
-                    print(Variable.sac_a_dos[fruit]['nombre'])
+                    Variable.sac_a_dos[Variable.objetRamasser]['nombre'] += 1
+                    print(f'Vous avez {Variable.sac_a_dos[Variable.objetRamasser]["nombre"]} {Variable.objetRamasser}' )
                     Nourriture.supprimerObjet()
+                    if Variable.objetRamasser not in Variable.listeFruit :
+                        Variable.sac_a_dos[Variable.objetRamasser]["positionY"] = None
+                        Variable.sac_a_dos[Variable.objetRamasser]["positionX"] = None
 
 
 #__________________________________________________________________________________________________________________________
