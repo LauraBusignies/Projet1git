@@ -3,6 +3,7 @@ import random
 import Utilities
 import Display
 import Nourriture
+import sys
 
 def arbre ():
     if Variable.ancienCaractere == "\u001b[38;5;64mγ\033[0m" or Variable.ancienCaractere == "\u001b[38;5;76m↑\033[0m" or Variable.ancienCaractere == "\u001b[38;5;46m♣\033[0m": 
@@ -89,6 +90,7 @@ def displaySac():
     print(f"  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n")
 
     listeAction =["l", "u", "d"]
+    print(f'|| Energie :{Variable.vitalité["Energie"]["Stock"]} || Hydratation :{Variable.vitalité["Hydratation"]["Stock"]} || Satiété :{Variable.vitalité["Satiété"]["Stock"]} ||\n')
     action =input("Que veux tu faire ? Sortir du sac -> L / Utiliser un objet de ton sac -> U + NomObjet / Jetter un objet de ton sac -> D + objet \n").lower()
     Variable.checkActionSac = False
     Utilities.checkAction(action, listeAction)
@@ -99,8 +101,51 @@ def displaySac():
         Utilities.clear()
     elif Variable.lettre == "d":
         Utilities.deleteObjet()
-        
+        Utilities.clear()
+        displaySac()
+    elif Variable.lettre == "u" :
+        Utilities.utiliserObjet()
+        Utilities.clear()
+        displaySac()
 
+
+def die():
+    Utilities.clear()
+    print("    ▄· ▄▌      ▄• ▄▌▄▄▄      ·▄▄▄▄  ▄▄▄ . ▄▄▄· ·▄▄▄▄")  
+    print("   ▐█▪██▌▪     █▪██▌▀▄ █·    ██▪ ██ ▀▄.▀·▐█ ▀█ ██▪ ██ ")
+    print("   ▐█▌▐█▪ ▄█▀▄ █▌▐█▌▐▀▀▄     ▐█· ▐█▌▐▀▀▪▄▄█▀▀█ ▐█· ▐█▌")
+    print("    ▐█▀·.▐█▌.▐▌▐█▄█▌▐█•█▌    ██. ██ ▐█▄▄▌▐█ ▪▐▌██. ██") 
+    print("     ▀ •  ▀█▄▀▪ ▀▀▀ .▀  ▀    ▀▀▀▀▀•  ▀▀▀  ▀  ▀ ▀▀▀▀▀•")
+    print("                    _,.-------.,_")
+    print("                 ,;~'             '~;, ")
+    print("               ,;                     ;,")
+    print("              ;                         ;")
+    print("             ,'                         ',")
+    print("            ,;                           ;,")
+    print("            ; ;      .           .      ; ;")
+    print("            | ;   ______       ______   ; | ")
+    print("            |  `/~'     ~' . '~     '~\'   |")
+    print("            |  ~  ,-~~~^~, | ,~^~~~-,  ~  |")
+    print("             |   |        }:{        |   | ")
+    print("             |   l       / | \       !   |")
+    print("             .~  (__,.--'.^.  '--.,__)  ~. ")
+    print("             |     ---;' / | \ `;---     |  ")
+    print("              \__.       \/^\/       .__/  ")
+    print("                | \                 / |  ")
+    print("                | |T~\___!___!___/~T| |  ")
+    print("                | |`IIII_I_I_I_IIII'| |  ")
+    print("                |  \,III I I I III,/  |  ")
+    print("                 \   `~~~~~~~~~~'    /")
+    print("                   \   .       .   /")
+    print("                     \.    ^    ./   ")
+
+    print()
+    réponse = input("Veux tu rejouer ?").lower()
+    while réponse != "oui" and réponse != "non" :
+        réponse = input("Oui ou non ? ")
+    if réponse == "non" :
+        sys.exit (0)
+        
 
 
 

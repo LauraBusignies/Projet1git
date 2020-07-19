@@ -24,7 +24,7 @@ def nombreObjet():
 #__________________________________________________________________________________________________________________________
 
 def checkAction(action, listeAction):
-    if len(action) > 1 and action[0] == "d" :
+    if len(action) > 1 and action[0] == "d" or action[0] == "u":
             action = list(action)
             Variable.lettre = action[0]
             Variable.fruit = "".join(action[2:]).capitalize()
@@ -34,7 +34,7 @@ def checkAction(action, listeAction):
     Variable.checkActionSac = False
     if len(action) == 1 and Variable.lettre == "l" :
         Variable.checkActionSac = True
-    elif Variable.lettre == "u" or Variable.lettre == "d" and Variable.fruit in Variable.contenuInventaire :
+    elif (Variable.lettre == "u" and Variable.fruit in Variable.contenuInventaire) or (Variable.lettre == "d" and Variable.fruit in Variable.contenuInventaire) :
         Variable.checkActionSac = True
 #__________________________________________________________________________________________________________________________
 
@@ -59,9 +59,9 @@ def deleteObjet ():
 #__________________________________________________________________________________________________________________________
 
 def vitalitéJoeur() :
-    Variable.vitalité["Fatigue"]["stock"] -= Variable.vitalité["Fatigue"]["-"]
-    Variable.vitalité["Hydratation"]["stock"] -= Variable.vitalité["Hydratation"]["-"]
-    Variable.vitalité["Satiété"]["stock"] -= Variable.vitalité["Satiété"]["-"]
+    Variable.vitalité["Energie"]["Stock"] -= Variable.vitalité["Energie"]["-"]
+    Variable.vitalité["Hydratation"]["Stock"] -= Variable.vitalité["Hydratation"]["-"]
+    Variable.vitalité["Satiété"]["Stock"] -= Variable.vitalité["Satiété"]["-"]
     
 #__________________________________________________________________________________________________________________________
 
@@ -95,3 +95,97 @@ def verificationObjetSol() :
         if Variable.positionJoueur[0] == Variable.sac_a_dos[k]["positionY"] and Variable.positionJoueur[1] == Variable.sac_a_dos[k]["positionX"] :
             Variable.validationPositionSol = True
             Variable.objetRamasser = k
+
+#______________________________________________________________________________________________________________
+
+def remplirBouteille() :
+    if Variable.sac_a_dos["Bouteille"]["nombre"] == 0 :
+        print("Vous n'avez pas votre bouteille dans votre sac")
+    elif Variable.liste_Map[Variable.positionJoueur[0]-1][Variable.positionJoueur[1]] == "≈" or Variable.liste_Map[Variable.positionJoueur[0]+1][Variable.positionJoueur[1]] == "≈" :
+        Variable.sac_a_dos["Bouteille"]["Stockage"] = 100
+        print("Votre bouteille est completement rempli")
+    elif Variable.liste_Map[Variable.positionJoueur[0]][Variable.positionJoueur[1]-1] == "≈" or Variable.liste_Map[Variable.positionJoueur[0]][Variable.positionJoueur[1]+1] == "≈" :
+        Variable.sac_a_dos["Bouteille"]["Stockage"] = 100
+        print("Votre bouteille est completement rempli")
+    else:
+        print("Vous devez être près de la rivière pour remplir votre bouteille")
+    time.sleep(2.5)
+
+#______________________________________________________________________________________________________________
+
+def utiliserObjet():
+    satiété = Variable.vitalité["Satiété"]["Stock"]
+    hydratation = Variable.vitalité["Hydratation"]["Stock"]
+    bouteille = Variable.sac_a_dos["Bouteille"]["Stockage"]
+
+    if Variable.fruit in Variable.listeFruit :
+        fruit = Variable.sac_a_dos[Variable.fruit]["+"]
+        addition = (satiété + fruit)
+        if addition < 100 :
+            Variable.vitalité["Satiété"]["Stock"] = addition
+            Variable.sac_a_dos[Variable.fruit]["nombre"] -= 1
+            print(f'Vous avez récupéré {fruit} de satiété')
+
+        elif satiété == 100 :
+            print("Vous avez le ventre plein !")
+        elif addition > 100 :
+
+            print(f'Vous avez récupéré {satiété - 100} de satiété')
+            print(f'Vous avez récupéré {fruit} de satiété')
+            Variable.vitalité["Satiété"]["Stock"] = 100
+            Variable.sac_a_dos[Variable.fruit]["nombre"] -= 1
+            
+    elif Variable.fruit == "Bouteille" :
+        if bouteille == 0 :
+            print("Votre bouteille est vide !")
+        elif hydratation == 100 :
+            print("Vous n'avez pas soif !")
+        else :
+            Variable.vitalité["Hydratation"]["Stock"] += bouteille 
+            if Variable.vitalité["Hydratation"]["Stock"] > 100 :
+                Variable.vitalité["Hydratation"]["Stock"] = 100
+            if bouteille < hydratation :
+                Variable.sac_a_dos["Bouteille"]["Stockage"] = 0
+            else :
+                Variable.sac_a_dos["Bouteille"]["Stockage"] = bouteille - (bouteille - hydratation)
+            print(f'Votre bouteille est rempli a {Variable.sac_a_dos["Bouteille"]["Stockage"]}%')
+            
+    else :
+        print("Votre couteau n'a pas d'utilité pour le moment")
+    time.sleep(2.5)
+
+def displayVitalité():
+    graduation("Energie","\u001b[31m•\u001b[0m", ":    ")
+    graduation("Hydratation","\u001b[34m•\u001b[0m", ":")
+    graduation("Satiété","\u001b[32m•\u001b[0m", ":    ")
+
+def graduation(string, couleur, espace):
+    ligne = ""
+    compteur = 0
+    for loop in range(Variable.vitalité[string]["Stock"]):
+        if compteur % 2 == 0 :
+            ligne += "•"
+        else : 
+            ligne += couleur
+        compteur += 1
+    print(f'{string} {espace} {ligne}')
+
+def sleep():
+    try :
+        heure = int(input("Combien d'heure veux tu dormir ? : "))
+        for loop in range (heure) :
+            afterClear()
+            print("zzzZZZ")
+            time.sleep(1.0)
+            Variable.vitalité["Energie"]["Stock"] += 10
+
+            if Variable.vitalité["Energie"]["Stock"] > 100 :
+                Variable.vitalité["Energie"]["Stock"] = 100
+                print("Vous avez assez dormis")
+                time.sleep(1.5)
+                break
+    except :
+        print("Vous dormirez plus tard ")
+        time.sleep(1.5)
+
+

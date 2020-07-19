@@ -34,7 +34,7 @@ def map1():
             print(caractere, end="")
         axeY += 1
     print()
-    print(f'|| Fatigue :{Variable.vitalité["Fatigue"]["stock"]} || Hydratation :{Variable.vitalité["Hydratation"]["stock"]} || Satiété :{Variable.vitalité["Satiété"]["stock"]} ||')
+    Utilities.displayVitalité()
     print()
     message.arbre()
     message.bougerArbre()

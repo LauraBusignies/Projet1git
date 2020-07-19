@@ -23,16 +23,16 @@ fruit = ""
 checkActionSac = False
 
 vitalité = {
-    "Fatigue" :{
-        "stock" : 100,
+    "Energie" :{
+        "Stock" : 100,
         "-" : 3
     },
     "Hydratation" :{
-        "stock" : 100,
+        "Stock" : 100,
         "-" : 2
     },
     "Satiété" :{
-        "stock" : 100,
+        "Stock" : 100,
         "-" : 2
     }}
 
@@ -187,7 +187,7 @@ sac_a_dos = {
     "Chaussure" :{ 
         "nom" : "Chaussure",
         "nombre" : 0,
-        "+" : None ,
+        "+" : 0 ,
         "Stockage" : None,
         "StockageM" : None,
         "Utilité" : "Marcher sur les cailloux",
@@ -202,7 +202,7 @@ sac_a_dos = {
         "nom" : "Bouteille",
         "nombre" : 1,
         "+" : 20,
-        "StockageA" : 100,
+        "Stockage" : 100,
         "StockageM" : 100,
         "Utilité" : "Hydratation",
         "Ramassage": "Vous avez trouvé une bouteille d'eau",
