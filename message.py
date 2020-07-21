@@ -5,6 +5,7 @@ import Display
 import Nourriture
 import sys
 
+
 def arbre ():
     if Variable.ancienCaractere == "\u001b[38;5;64mγ\033[0m" or Variable.ancienCaractere == "\u001b[38;5;76m↑\033[0m" or Variable.ancienCaractere == "\u001b[38;5;46m♣\033[0m": 
         print("Vous êtes cachez sous un arbres")
