@@ -11,22 +11,18 @@ def clear():
 
 def entrerDeplacement():
 
-    Variable.nombre = 1
     entrer = input("Entrez une instruction  : ")
     if entrer != "" :
         Variable.deplacement = entrer[0]
-    if len(entrer) > 1 :
-        Variable.nombre = entrer[1:]
+
     listeDeplacement= ["z", "q","s","d","o","r","b","e", "c", "a", "f"]
-    while Variable.deplacement not in listeDeplacement :
-            print("Veuillez saisir une lettre entre Z, Q , S, D. \n Z pour monter \n S pour descendre \n D pour aller a droite \n Q pour aller a gauche")
+    while Variable.deplacement not in listeDeplacement or len(entrer) > 1:
+            print("Entrez seulement une lettre")
             entrer = (input("Entrez une instruction : ")).lower()
-            print()
 
             if entrer != "" :
                 Variable.deplacement = entrer[0]
-            if len(entrer) > 1 :
-                Variable.nombre = entrer[1:]
+
 
             
 def ZQSD ():
@@ -114,4 +110,3 @@ def ZQSD ():
     
     if Variable.deplacement == "f" :
         Utilities.sleep()
-        # message.die()

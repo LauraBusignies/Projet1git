@@ -1,33 +1,22 @@
-print(" ▄· ▄▌      ▄• ▄▌▄▄▄      ·▄▄▄▄  ▄▄▄ . ▄▄▄· ·▄▄▄▄")  
-print("▐█▪██▌▪     █▪██▌▀▄ █·    ██▪ ██ ▀▄.▀·▐█ ▀█ ██▪ ██ ")
-print("▐█▌▐█▪ ▄█▀▄ █▌▐█▌▐▀▀▄     ▐█· ▐█▌▐▀▀▪▄▄█▀▀█ ▐█· ▐█▌")
-print(" ▐█▀·.▐█▌.▐▌▐█▄█▌▐█•█▌    ██. ██ ▐█▄▄▌▐█ ▪▐▌██. ██") 
-print("  ▀ •  ▀█▄▀▪ ▀▀▀ .▀  ▀    ▀▀▀▀▀•  ▀▀▀  ▀  ▀ ▀▀▀▀▀•")
-print("        _,.-------.,_")
-print("     ,;~'             '~;, ")
-print("   ,;                     ;,")
-print("  ;                         ;")
-print(" ,'                         ',")
-print(",;                           ;,")
-print("; ;      .           .      ; ;")
-print("| ;   ______       ______   ; | ")
-print("|  `/~'     ~' . '~     '~\'   |")
-print("|  ~  ,-~~~^~, | ,~^~~~-,  ~  |")
-print(" |   |        }:{        |   | ")
-print(" |   l       / | \       !   |")
-print(" .~  (__,.--'.^.  '--.,__)  ~. ")
-print(" |     ---;' / | \ `;---     |  ")
-print("  \__.       \/^\/       .__/  ")
-print("    | \                 / |  ")
-print("    | |T~\___!___!___/~T| |  ")
-print("    | |`IIII_I_I_I_IIII'| |  ")
-print("    |  \,III I I I III,/  |  ")
-print("     \   `~~~~~~~~~~'    /")
-print("       \   .       .   /")
-print("         \.    ^    ./   ")
+import Utilities
+import time
 
-réponse = input("Veux tu rejouer ?")
-while réponse != "oui" or réponse != "non" :
-    réponse = input("Oui ou non ? ")
-if réponse == "non" :
-    System.exit (0)
+def victory ():
+    print("  o              o   __o__       o__ __o    ____o__ __o____     o__ __o        o__ __o    \o       o/ ")
+    print(" <|>            <|>    |        /v     v\    /   \   /   \     /v     v\      <|     v\    v\     /v  ")
+    print(" < >            < >   / \      />                 \o/         />       <\     / \     <\    <\   />   ")
+    print("  \o            o/    \o/    o/                    |        o/           \o   \o/     o/      \o/     ")
+    print("   v\          /v      |    <|                    < >      <|             |>   |__  _<|        |      ")
+    print("    <\        />      < >    \\                     |        \\\           //    |       \      / \     ")
+    print("      \o    o/         |       \                   o          \         /     <o>       \o    \o/     ")
+    print("       v\  /v          o        o       o         <|           o       o       |         v\    |      ")
+    print("        <\/>         __|>_      <\__ __/>         / \          <\__ __/>      / \         <\  / \   ") 
+
+counter = 0
+while counter != 10 :
+    counter += 1
+    Utilities.clear()
+    time.sleep(0.1)
+    victory()
+    
+            

@@ -111,42 +111,60 @@ def displaySac():
 
 
 def die():
-    Utilities.clear()
-    print("    ▄· ▄▌      ▄• ▄▌▄▄▄      ·▄▄▄▄  ▄▄▄ . ▄▄▄· ·▄▄▄▄")  
-    print("   ▐█▪██▌▪     █▪██▌▀▄ █·    ██▪ ██ ▀▄.▀·▐█ ▀█ ██▪ ██ ")
-    print("   ▐█▌▐█▪ ▄█▀▄ █▌▐█▌▐▀▀▄     ▐█· ▐█▌▐▀▀▪▄▄█▀▀█ ▐█· ▐█▌")
-    print("    ▐█▀·.▐█▌.▐▌▐█▄█▌▐█•█▌    ██. ██ ▐█▄▄▌▐█ ▪▐▌██. ██") 
-    print("     ▀ •  ▀█▄▀▪ ▀▀▀ .▀  ▀    ▀▀▀▀▀•  ▀▀▀  ▀  ▀ ▀▀▀▀▀•")
-    print("                    _,.-------.,_")
-    print("                 ,;~'             '~;, ")
-    print("               ,;                     ;,")
-    print("              ;                         ;")
-    print("             ,'                         ',")
-    print("            ,;                           ;,")
-    print("            ; ;      .           .      ; ;")
-    print("            | ;   ______       ______   ; | ")
-    print("            |  `/~'     ~' . '~     '~\'   |")
-    print("            |  ~  ,-~~~^~, | ,~^~~~-,  ~  |")
-    print("             |   |        }:{        |   | ")
-    print("             |   l       / | \       !   |")
-    print("             .~  (__,.--'.^.  '--.,__)  ~. ")
-    print("             |     ---;' / | \ `;---     |  ")
-    print("              \__.       \/^\/       .__/  ")
-    print("                | \                 / |  ")
-    print("                | |T~\___!___!___/~T| |  ")
-    print("                | |`IIII_I_I_I_IIII'| |  ")
-    print("                |  \,III I I I III,/  |  ")
-    print("                 \   `~~~~~~~~~~'    /")
-    print("                   \   .       .   /")
-    print("                     \.    ^    ./   ")
+    if Variable.vitalité["Energie"]["Stock"] < 0 or Variable.vitalité["Hydratation"]["Stock"] < 0 or Variable.vitalité["Satiété"]["Stock"] < 0 :
+        Utilities.clear()
+        print("    ▄· ▄▌      ▄• ▄▌▄▄▄      ·▄▄▄▄  ▄▄▄ . ▄▄▄· ·▄▄▄▄")  
+        print("   ▐█▪██▌▪     █▪██▌▀▄ █·    ██▪ ██ ▀▄.▀·▐█ ▀█ ██▪ ██ ")
+        print("   ▐█▌▐█▪ ▄█▀▄ █▌▐█▌▐▀▀▄     ▐█· ▐█▌▐▀▀▪▄▄█▀▀█ ▐█· ▐█▌")
+        print("    ▐█▀·.▐█▌.▐▌▐█▄█▌▐█•█▌    ██. ██ ▐█▄▄▌▐█ ▪▐▌██. ██") 
+        print("     ▀ •  ▀█▄▀▪ ▀▀▀ .▀  ▀    ▀▀▀▀▀•  ▀▀▀  ▀  ▀ ▀▀▀▀▀•")
+        print("                    _,.-------.,_")
+        print("                 ,;~'             '~;, ")
+        print("               ,;                     ;,")
+        print("              ;                         ;")
+        print("             ,'                         ',")
+        print("            ,;                           ;,")
+        print("            ; ;      .           .      ; ;")
+        print("            | ;   ______       ______   ; | ")
+        print("            |  `/~'     ~' . '~     '~\'   |")
+        print("            |  ~  ,-~~~^~, | ,~^~~~-,  ~  |")
+        print("             |   |        }:{        |   | ")
+        print("             |   l       / | \       !   |")
+        print("             .~  (__,.--'.^.  '--.,__)  ~. ")
+        print("             |     ---;' / | \ `;---     |  ")
+        print("              \__.       \/^\/       .__/  ")
+        print("                | \                 / |  ")
+        print("                | |T~\___!___!___/~T| |  ")
+        print("                | |`IIII_I_I_I_IIII'| |  ")
+        print("                |  \,III I I I III,/  |  ")
+        print("                 \   `~~~~~~~~~~'    /")
+        print("                   \   .       .   /")
+        print("                     \.    ^    ./   ")
 
-    print()
-    réponse = input("Veux tu rejouer ?").lower()
-    while réponse != "oui" and réponse != "non" :
-        réponse = input("Oui ou non ? ")
-    if réponse == "non" :
-        sys.exit (0)
+        print()
+        réponse = input("Veux tu rejouer ?").lower()
+        while réponse != "oui" and réponse != "non" :
+            réponse = input("Oui ou non ? ")
+        if réponse == "non" :
+            sys.exit (0)
+        else :
+            Variable.positionJoueur[0] = 25
+            Variable.positionJoueur[1] = 75
+            Variable.vitalité["Energie"]["Stock"] = 100
+            Variable.vitalité["Hydratation"]["Stock"] = 100
+            Variable.vitalité["Satiété"]["Stock"] = 100
+            Display.map1()
         
+def victory ():
+    print("  o              o   __o__       o__ __o    ____o__ __o____     o__ __o        o__ __o    \o       o/ ")
+    print(" <|>            <|>    |        /v     v\    /   \   /   \     /v     v\      <|     v\    v\     /v  ")
+    print(" < >            < >   / \      />                 \o/         />       <\     / \     <\    <\   />   ")
+    print("  \o            o/    \o/    o/                    |        o/           \o   \o/     o/      \o/     ")
+    print("   v\          /v      |    <|                    < >      <|             |>   |__  _<|        |      ")
+    print("    <\        />      < >    \\                     |        \\\           //    |       \      / \     ")
+    print("      \o    o/         |       \                   o          \         /     <o>       \o    \o/     ")
+    print("       v\  /v          o        o       o         <|           o       o       |         v\    |      ")
+    print("        <\/>         __|>_      <\__ __/>         / \          <\__ __/>      / \         <\  / \   ") 
 
 
 

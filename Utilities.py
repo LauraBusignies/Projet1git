@@ -3,17 +3,71 @@ import os
 import Display
 import random
 import time
+import enigme
+import message
+import sys
+
+
+
 
 def clear():
     os.system('cls') #pour Windows
-
+#__________________________________________________________________________________________________________________________
 def afterClear():
     clear()
     Display.map1()
+#__________________________________________________________________________________________________________________________
+def YesOrNo(variable):   
+        while variable != "non" and variable != "oui" :
+            variable = input("Oui ou non ? ").lower()
+        return variable
+#__________________________________________________________________________________________________________________________ 
 
-# Definir l
+def finish():
+    if Variable.ancienCaractere == "♫" :
+        print("Vous devez faire les trois enigme avant d'acceder à cette porte")
+    elif Variable.ancienCaractere == "\u001b[38;5;226m♫\033[0m" :
+        if Variable.sac_a_dos['Bouteille']['nombre'] == 0 or Variable.sac_a_dos['Couteau']['nombre'] == 0 :
+            print("Vous devez avoir votre bouteille et votre couteau pour prendre cette porte")
+        else :
+            clear()
+            message.victory()
+            time.sleep(3.0)
+            sys.exit (0)
 
-    
+#__________________________________________________________________________________________________________________________
+
+
+
+#__________________________________________________________________________________________________________________________
+
+def enigmeMystereCesarSinge ():
+    if Variable.ancienCaractere == "\u001b[38;5;226m♪\033[0m" or Variable.ancienCaractere == "\u001b[38;5;240m♪\033[0m":
+        if Variable.positionJoueur[0] in Variable.positionEnigme and Variable.positionJoueur[1] in Variable.positionEnigme :
+            print("Vous avez déjà fait cette enigme")
+        else  :
+            reponse = input("Tu es pret à faire l'enigme ? ")
+            reponse = YesOrNo(reponse)
+            if reponse == "oui" :
+                if Variable.verificationMystere == False :
+                    clear()
+                    enigme.mainMystereGame()
+
+                elif Variable.verificationCesar == False :
+                    clear()
+                    enigme.mainCesar()
+
+                else:
+                    clear()
+                    enigme.mainFizzBuzz()
+                Variable.positionJoueur[0] += 1
+                afterClear()
+                print(Variable.nbKey)
+            else : 
+                Variable.positionJoueur[0] += 1
+                afterClear()
+
+#__________________________________________________________________________________________________________________________   
 # Capacité du Sac à dos 
 def nombreObjet():
     Variable.compteurStock = 0
@@ -188,4 +242,6 @@ def sleep():
         print("Vous dormirez plus tard ")
         time.sleep(1.5)
 
+
+#def victoire ():
 

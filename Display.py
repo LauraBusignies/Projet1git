@@ -15,11 +15,19 @@ def map1():
         axeX = 0
         for caractere in line :
             caractere = Utilities.caracterePosition(axeY, axeX, caractere)
+
+
             for k in Variable.sac_a_dos:
                 if axeY == Variable.sac_a_dos[k]["positionY"] and axeX == Variable.sac_a_dos[k]["positionX"]:
                     caractere = "×"
             if caractere in Variable.color_character :
-                 caractere = f'{Variable.color_character[caractere]["colorS"]}{Variable.color_character[caractere]["colorE"]}'
+                caractere = f'{Variable.color_character[caractere]["colorS"]}{Variable.color_character[caractere]["colorE"]}'
+            if caractere == "\u001b[38;5;226m♪\033[0m" :
+                if axeY in Variable.positionEnigme and axeX in Variable.positionEnigme :
+                    caractere = "\u001b[38;5;240m♪\033[0m"
+            if caractere == "\u001b[38;5;226m♫\033[0m" and Variable.nbKey != 3:
+                caractere = "♫"
+
             if Variable.positionJoueur[0] == axeY and Variable.positionJoueur[1] == axeX :
                 Variable.ancienCaractere = caractere
                 if caractere == "\u001b[38;5;64mγ\033[0m" :
@@ -36,8 +44,11 @@ def map1():
     print()
     Utilities.displayVitalité()
     print()
+    Utilities.enigmeMystereCesarSinge ()
     message.arbre()
     message.bougerArbre()
     message.ramasserFruit()
+    Utilities.finish()
+    message.die()
 
     

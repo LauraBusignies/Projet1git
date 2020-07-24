@@ -1,8 +1,7 @@
 
 deplacement = ""
-nombre = 0
 liste_Map = []
-positionJoueur = [15, 65]
+positionJoueur = [25, 75]
 compteurStock = 0
 ancienCaractere = ""
 listeArbre = ["\u001b[38;5;64mγ\033[0m", "\u001b[38;5;76m↑\033[0m", "\u001b[38;5;46m♣\033[0m"]
@@ -21,6 +20,12 @@ contenuInventaire = []
 lettre = ""
 fruit = ""
 checkActionSac = False
+
+nbKey = 3
+verificationMonkey = False
+verificationMystere = False
+verificationCesar = False 
+positionEnigme = []
 
 vitalité = {
     "Energie" :{
@@ -88,7 +93,7 @@ color_character = {
     "║" : {
         "name" : "Coté porte" , 
         "image" : "║",
-        "colorS" : "\u001b[38;5;196m║",
+        "colorS" : "\u001b[38;5;88m║",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -96,7 +101,7 @@ color_character = {
     "╔" :{
         "name" : "coin porte" , 
         "image" : "╔",
-        "colorS" : "\u001b[38;5;196m╔",
+        "colorS" : "\u001b[38;5;88m╔",
         "colorE" : "\033[0m",
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -104,7 +109,7 @@ color_character = {
     "═" :{
         "name" : "haut porte" , 
         "image" : "═",
-        "colorS" : "\u001b[38;5;196m═",
+        "colorS" : "\u001b[38;5;88m═",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -112,7 +117,7 @@ color_character = {
     "╗" :{
         "name" : "coin porte" , 
         "image" : "╗",
-        "colorS" : "\u001b[38;5;196m╗",
+        "colorS" : "\u001b[38;5;88m╗",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Tu te manges une porte là !"
@@ -133,6 +138,14 @@ color_character = {
         "CanWalk" : True,
         "Erreur" : None
     },   
+    "♫" :{
+        "name" : "clé" , 
+        "image" : "♫",
+        "colorS" : "\u001b[38;5;226m♫",
+        "colorE" : "\033[0m",  
+        "CanWalk" : True,
+        "Erreur" : None
+    }, 
     "γ" :{
         "name" : "arbre" , 
         "image" : "γ",

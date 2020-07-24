@@ -4,8 +4,26 @@ import sys
 import os
 
 
+
 def clear ():
     os.system('cls')
+
+def rules ():
+    print("\nTe revoilà aventurier ! Pour gagner cette enigme tu devras gagner le jeu du FizzBuzz contre des singes !\n")
+    time.sleep(1.5)
+    print("Les règles du jeu sont :")
+    time.sleep(1.5)
+    print("On compte à tour de rôle en commençant à 1")
+    time.sleep(1.0)
+    print(" Si le nombre à annoncer est un multiple de 3, il faut dire Fizz au lieu du nombre.")
+    time.sleep(1.0)
+    print("     Si c’est un multiple de 5, il faut dire Buzz.")
+    time.sleep(1.0)
+    print("         Si c’est à la fois un multiple de 3 et 5 il faut dire FizzBuzz.")
+    time.sleep(1.0)
+    print("             Si on se trompe, on est éliminé de la partie et les joueurs restants recommencent jusqu’à ce qu’il n’en reste qu’un.")
+    time.sleep(1.0)
+
 
 def monkey(listeJoueur):
     l1 = ["   .-'-.      ",
@@ -27,6 +45,7 @@ def monkey(listeJoueur):
 
 
 def game ():
+    rules()
     nbJoueur = { "singe1" : 0, "singe2" : 0, "singe3" : 0, "singe4" : 0, "singe5" : 0, "singe6" : 0, "singe7" : 0, "singe8" : 0, "singe9" : 0, }
     listeJoueur = []
     for k in nbJoueur :
@@ -47,6 +66,7 @@ def game ():
         print()
         clear()
         monkey(listeJoueur)
+        print()
         while len(listeJoueur) == ancienlen :
 
             chiffre = random.randint(1, 10 - nbJoueur[listeJoueur[compteur]])
@@ -56,7 +76,10 @@ def game ():
                     
                 elif chiffre == 1 and nombre % 5 == 0:
                     print('Buzz, ', end = "")
-                    
+
+                elif chiffre == 1 and (nombre % 5 == 0 and nombre % 3 == 0) :
+                    print("FizzBuzz", end="")
+
                 else :
                     print(nombre)
                     print(f'{listeJoueur[compteur]} est éliminé'.capitalize())
@@ -73,19 +96,39 @@ def game ():
             nombre += 1 
     return listeJoueur
 
-listeJoueur = []       
-listeJoueur = game ()        
 
-if "aventurier" not in listeJoueur:
-    reponse = input("Tu as perdu, le chef ne veut pas te donner la clé, veux tu rejouer ? ").lower()
-    while reponse == "non" and reponse == "oui" :
-        reponse = input("Oui ou non ? ").lower()
-    while reponse == "oui" :
-        clear()
-        listeJoueur = game ()
+def mainFizzBuzz():
+
+    listeJoueur = []       
+    listeJoueur = game ()        
+
+    if "aventurier" not in listeJoueur:
         reponse = input("Tu as perdu, le chef ne veut pas te donner la clé, veux tu rejouer ? ").lower()
         while reponse == "non" and reponse == "oui" :
             reponse = input("Oui ou non ? ").lower()
+        while reponse == "oui" :
+            clear()
+            listeJoueur = game ()
+            reponse = input("Tu as perdu, le chef ne veut pas te donner la clé, veux tu rejouer ? ").lower()
+            while reponse == "non" and reponse == "oui" :
+                reponse = input("Oui ou non ? ").lower()
     else :
-        print("Bravo tu as gagné la clé !")
- 
+        clear()
+        print("Bravo tout les singes ont perdu, tu as gagné la clé !")
+
+
+#                  /88888888888888888888888888\
+#                   |88888888888888888888888888/
+#                    |~~____~~~~~~~~~"""""""""|
+#                   / \_________/"""""""""""""\
+#                  /  |              \         \
+#                 /   |  88    88     \         \
+#                /    |  88    88      \         \
+#               /    /                  \        |
+#              /     |   ________        \       |
+#              \     |   \______/        /       |
+#   /"\         \     \____________     /        |
+#   | |__________\_        |  |        /        /
+# /""""\           \_------'  '-------/       --
+# \____/,___________\                 -------/
+# ------*            |                    \
