@@ -36,7 +36,7 @@ vitalité = {
         "Stock" : 100,
         "-" : 2
     },
-    "Satiété" :{
+    "Satiete" :{
         "Stock" : 100,
         "-" : 2
     }}
