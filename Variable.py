@@ -23,7 +23,7 @@ var_enregistrer = {
 
     
     'verificationMonkey' : False,
-    'verificationMystere' : True,
+    'verificationMystere' : False,
     'verificationCesar' : False,
 
     'vitalite' : 
@@ -79,7 +79,7 @@ var_enregistrer = {
                 },
         "Banane" :{
             "nom" : "Banane",
-            "nombre" : 2,
+            "nombre" : 0,
             "+" : 14,        
             "Stockage" : None,
             "StockageM" : None,
@@ -92,7 +92,7 @@ var_enregistrer = {
     },
         "Ananas" :{ 
             "nom" : "Ananas",
-            "nombre" : 1,
+            "nombre" : 0,
             "+" : 20,
             "Stockage" : None,
             "StockageM" : None,
@@ -104,7 +104,7 @@ var_enregistrer = {
     },
         "Mangue" :{ 
             "nom" : "Mangue",
-            "nombre" : 5,
+            "nombre" : 0,
             "+" : 25,
             "Stockage" : None,
             "StockageM" : None,

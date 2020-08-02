@@ -89,8 +89,7 @@ def enigmeMystereCesarSinge ():
 def nombreObjet():
     Variable.compteurStock = 0
     for key in Variable.var_enregistrer['sac_a_dos']:
-        if Variable.var_enregistrer['sac_a_dos'][key]["nombre"] > 0 :
-            Variable.compteurStock += Variable.var_enregistrer['sac_a_dos'][key]["nombre"]
+        Variable.compteurStock += Variable.var_enregistrer['sac_a_dos'][key]['nombre']
 
 #__________________________________________________________________________________________________________________________
 

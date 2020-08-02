@@ -119,7 +119,7 @@
             "Utilité": "Satiete",
             "message": "Vous avez jettez un Ananas",
             "nom": "Ananas",
-            "nombre": null,
+            "nombre": 0,
             "positionX": null,
             "positionY": null
         },
@@ -131,7 +131,7 @@
             "Utilité": "Satiete",
             "message": "Vous avez jettez une Banane",
             "nom": "Banane",
-            "nombre": null,
+            "nombre": 0,
             "positionX": null,
             "positionY": null
         },
@@ -178,7 +178,7 @@
             "Utilité": "Satiete",
             "message": "Vous avez jettez une Mangue",
             "nom": "Mangue",
-            "nombre": null,
+            "nombre": 0,
             "positionX": null,
             "positionY": null
         }
