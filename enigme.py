@@ -97,7 +97,7 @@ def mainMystereGame():
         yes_or_no=input("Tant que tu ne diras pas oui, on sera coincé ici !").lower()
     while counter_game != 3 :
         for loop in range (3) :
-            mystery_number = random.randint(46, 49)
+            mystery_number = random.randint(0, 100)
             try_number = random.randint(5,10)
             counter_game += 1
 

@@ -4,7 +4,7 @@ import Variable
 #__________________________________________________________________________________________________________________________
 def ObjetAnanas():
 
-        for loop in range(15) :
+        for loop in range(20) :
             emplacementX = random.randint (1, 80)
             emplacementY = random.randint (2, 25)
             while Variable.liste_Map[emplacementY][emplacementX] != "γ" :
@@ -15,7 +15,7 @@ def ObjetAnanas():
 
 def ObjetMangue():
 
-        for loop in range(15) :
+        for loop in range(20) :
             emplacementX = random.randint (1, 80)
             emplacementY = random.randint (2, 25)
             while Variable.liste_Map[emplacementY][emplacementX] != "♣" :
@@ -26,7 +26,7 @@ def ObjetMangue():
 
 def ObjetBanane():
 
-        for loop in range(15) :
+        for loop in range(20) :
             emplacementX = random.randint (1, 80)
             emplacementY = random.randint (2, 25)
             while Variable.liste_Map[emplacementY][emplacementX] != "↑" :

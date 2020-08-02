@@ -80,7 +80,7 @@ var_enregistrer = {
         "Banane" :{
             "nom" : "Banane",
             "nombre" : 0,
-            "+" : 14,        
+            "+" : 20,        
             "Stockage" : None,
             "StockageM" : None,
             "Utilité" : "Satiete",
@@ -93,7 +93,7 @@ var_enregistrer = {
         "Ananas" :{ 
             "nom" : "Ananas",
             "nombre" : 0,
-            "+" : 20,
+            "+" : 25,
             "Stockage" : None,
             "StockageM" : None,
             "Utilité" : "Satiete",
@@ -105,7 +105,7 @@ var_enregistrer = {
         "Mangue" :{ 
             "nom" : "Mangue",
             "nombre" : 0,
-            "+" : 25,
+            "+" : 30,
             "Stockage" : None,
             "StockageM" : None,
             "Utilité" : "Satiete",

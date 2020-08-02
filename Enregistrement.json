@@ -1,10 +1,10 @@
 {
     "ancienCaractere": "",
-    "leave": false,
+    "leave": true,
     "nbKey": 0,
-    "nomAventurier": "",
+    "nomAventurier": "Marine",
     "nombreAction": 0,
-    "nombreDeplacement": 0,
+    "nombreDeplacement": 10,
     "objetRamasser": "",
     "positionArbreAnanas": [
         7,
@@ -104,15 +104,15 @@
     ],
     "positionEnigme": [],
     "positionJoueur": [
-        25,
-        75
+        20,
+        70
     ],
     "positionSolAnanas": [],
     "positionSolBanane": [],
     "positionSolMangue": [],
     "sac_a_dos": {
         "Ananas": {
-            "+": 20,
+            "+": 25,
             "Ramassage": "Vous avez trouvé un Ananas, miam !",
             "Stockage": null,
             "StockageM": null,
@@ -124,7 +124,7 @@
             "positionY": null
         },
         "Banane": {
-            "+": 14,
+            "+": 20,
             "Ramassage": "Vous avez trouvé une Banane, miam !",
             "Stockage": null,
             "StockageM": null,
@@ -171,7 +171,7 @@
             "positionY": null
         },
         "Mangue": {
-            "+": 25,
+            "+": 30,
             "Ramassage": "Vous avez trouvé un Mangue, miam !",
             "Stockage": null,
             "StockageM": null,
@@ -189,15 +189,15 @@
     "vitalite": {
         "Energie": {
             "-": 3,
-            "Stock": 100
+            "Stock": 70
         },
         "Hydratation": {
             "-": 2,
-            "Stock": 100
+            "Stock": 80
         },
         "Satiete": {
             "-": 2,
-            "Stock": 100
+            "Stock": 80
         }
     }
 }

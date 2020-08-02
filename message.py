@@ -146,12 +146,12 @@ def die():
         print()
         Variable.var_enregistrer['resultatJeu'] = 'Perdu'
         Variable.var_enregistrer['date'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-        Variable.dicHistorique['compteurHistorique'] += 1
         try :
             with open("Historique.json", "r", encoding="utf-8") as MyFile:
                 Variable.dicHistorique = json.load(MyFile)
         except : 
             pass
+        Variable.dicHistorique['compteurHistorique'] += 1
         Variable.dicHistorique[f'joueur{Variable.dicHistorique["compteurHistorique"]}'] = [Variable.var_enregistrer['nomAventurier'],
                             Variable.var_enregistrer['resultatJeu'],
                             Variable.var_enregistrer['nombreAction'],
@@ -200,6 +200,7 @@ def start():
         validation = input("Voulez vous charger la dernier partie sauvegardée ? ")
         if validation == "oui" :
             print("Te revoilà ",Variable.var_enregistrer['nomAventurier'])
+            time.sleep(1.5)
         else :
             with open("VariableDebut.json", "r", encoding="utf-8") as MyFile:
                 Variable.var_enregistrer = json.load(MyFile)   
