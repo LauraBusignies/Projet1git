@@ -27,7 +27,7 @@ verificationMystere = False
 verificationCesar = False 
 positionEnigme = []
 
-vitalité = {
+Vitalite = {
     "Energie" :{
         "Stock" : 100,
         "-" : 3
@@ -242,7 +242,7 @@ sac_a_dos = {
         "+" : 14,        
         "Stockage" : None,
         "StockageM" : None,
-        "Utilité" : "Satiété",
+        "Utilité" : "Satiete",
         "Ramassage": "Vous avez trouvé une Banane, miam !",
         "message": "Vous avez jettez une Banane",
         "positionY" : None,
@@ -255,7 +255,7 @@ sac_a_dos = {
         "+" : 20,
         "Stockage" : None,
         "StockageM" : None,
-        "Utilité" : "Satiété",
+        "Utilité" : "Satiete",
         "Ramassage": "Vous avez trouvé un Ananas, miam !",
         "message": "Vous avez jettez un Ananas",
         "positionY" : None,
@@ -267,7 +267,7 @@ sac_a_dos = {
         "+" : 25,
         "Stockage" : None,
         "StockageM" : None,
-        "Utilité" : "Satiété",
+        "Utilité" : "Satiete",
         "Ramassage": "Vous avez trouvé un Mangue, miam !",
         "message": "Vous avez jettez une Mangue",
         "positionY" : None,

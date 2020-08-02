@@ -42,7 +42,7 @@ def map1():
             print(caractere, end="")
         axeY += 1
     print()
-    Utilities.displayVitalité()
+    Utilities.displayVitalite()
     print()
     Utilities.enigmeMystereCesarSinge ()
     message.arbre()

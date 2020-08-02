@@ -34,7 +34,7 @@ def ZQSD ():
                 time.sleep(1.5)
             else :
                 Variable.positionJoueur[0] -= 1
-                Utilities.vitalitéJoeur()
+                Utilities.VitaliteJoeur()
                 clear()
 
 
@@ -46,7 +46,7 @@ def ZQSD ():
                 time.sleep(1.5)
             else :
                 Variable.positionJoueur[0] += 1
-                Utilities.vitalitéJoeur()
+                Utilities.VitaliteJoeur()
                 clear()
 
 
@@ -58,7 +58,7 @@ def ZQSD ():
                 time.sleep(1.5)
             else :
                 Variable.positionJoueur[1] += 1
-                Utilities.vitalitéJoeur()
+                Utilities.VitaliteJoeur()
                 clear()
 
 
@@ -70,7 +70,7 @@ def ZQSD ():
                 time.sleep(1.5)
             else :
                 Variable.positionJoueur[1] -= 1
-                Utilities.vitalitéJoeur()
+                Utilities.VitaliteJoeur()
                 clear()
             
     if Variable.deplacement == "o":

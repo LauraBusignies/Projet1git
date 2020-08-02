@@ -112,10 +112,10 @@ def deleteObjet ():
 
 #__________________________________________________________________________________________________________________________
 
-def vitalitéJoeur() :
-    Variable.vitalité["Energie"]["Stock"] -= Variable.vitalité["Energie"]["-"]
-    Variable.vitalité["Hydratation"]["Stock"] -= Variable.vitalité["Hydratation"]["-"]
-    Variable.vitalité["Satiété"]["Stock"] -= Variable.vitalité["Satiété"]["-"]
+def VitaliteJoeur() :
+    Variable.Vitalite["Energie"]["Stock"] -= Variable.Vitalite["Energie"]["-"]
+    Variable.Vitalite["Hydratation"]["Stock"] -= Variable.Vitalite["Hydratation"]["-"]
+    Variable.Vitalite["Satiete"]["Stock"] -= Variable.Vitalite["Satiete"]["-"]
     
 #__________________________________________________________________________________________________________________________
 
@@ -168,25 +168,25 @@ def remplirBouteille() :
 #______________________________________________________________________________________________________________
 
 def utiliserObjet():
-    satiété = Variable.vitalité["Satiété"]["Stock"]
-    hydratation = Variable.vitalité["Hydratation"]["Stock"]
+    Satiete = Variable.Vitalite["Satiete"]["Stock"]
+    hydratation = Variable.Vitalite["Hydratation"]["Stock"]
     bouteille = Variable.sac_a_dos["Bouteille"]["Stockage"]
 
     if Variable.fruit in Variable.listeFruit :
         fruit = Variable.sac_a_dos[Variable.fruit]["+"]
-        addition = (satiété + fruit)
+        addition = (Satiete + fruit)
         if addition < 100 :
-            Variable.vitalité["Satiété"]["Stock"] = addition
+            Variable.Vitalite["Satiete"]["Stock"] = addition
             Variable.sac_a_dos[Variable.fruit]["nombre"] -= 1
-            print(f'Vous avez récupéré {fruit} de satiété')
+            print(f'Vous avez récupéré {fruit} de Satiete')
 
-        elif satiété == 100 :
+        elif Satiete == 100 :
             print("Vous avez le ventre plein !")
         elif addition > 100 :
 
-            print(f'Vous avez récupéré {satiété - 100} de satiété')
-            print(f'Vous avez récupéré {fruit} de satiété')
-            Variable.vitalité["Satiété"]["Stock"] = 100
+            print(f'Vous avez récupéré {Satiete - 100} de Satiete')
+            print(f'Vous avez récupéré {fruit} de Satiete')
+            Variable.Vitalite["Satiete"]["Stock"] = 100
             Variable.sac_a_dos[Variable.fruit]["nombre"] -= 1
             
     elif Variable.fruit == "Bouteille" :
@@ -195,9 +195,9 @@ def utiliserObjet():
         elif hydratation == 100 :
             print("Vous n'avez pas soif !")
         else :
-            Variable.vitalité["Hydratation"]["Stock"] += bouteille 
-            if Variable.vitalité["Hydratation"]["Stock"] > 100 :
-                Variable.vitalité["Hydratation"]["Stock"] = 100
+            Variable.Vitalite["Hydratation"]["Stock"] += bouteille 
+            if Variable.Vitalite["Hydratation"]["Stock"] > 100 :
+                Variable.Vitalite["Hydratation"]["Stock"] = 100
             if bouteille < hydratation :
                 Variable.sac_a_dos["Bouteille"]["Stockage"] = 0
             else :
@@ -208,15 +208,15 @@ def utiliserObjet():
         print("Votre couteau n'a pas d'utilité pour le moment")
     time.sleep(2.5)
 
-def displayVitalité():
+def displayVitalite():
     graduation("Energie","\u001b[31m•\u001b[0m", ":    ")
     graduation("Hydratation","\u001b[34m•\u001b[0m", ":")
-    graduation("Satiété","\u001b[32m•\u001b[0m", ":    ")
+    graduation("Satiete","\u001b[32m•\u001b[0m", ":    ")
 
 def graduation(string, couleur, espace):
     ligne = ""
     compteur = 0
-    for loop in range(Variable.vitalité[string]["Stock"]):
+    for loop in range(Variable.Vitalite[string]["Stock"]):
         if compteur % 2 == 0 :
             ligne += "•"
         else : 
@@ -231,10 +231,10 @@ def sleep():
             afterClear()
             print("zzzZZZ")
             time.sleep(1.0)
-            Variable.vitalité["Energie"]["Stock"] += 10
+            Variable.Vitalite["Energie"]["Stock"] += 10
 
-            if Variable.vitalité["Energie"]["Stock"] > 100 :
-                Variable.vitalité["Energie"]["Stock"] = 100
+            if Variable.Vitalite["Energie"]["Stock"] > 100 :
+                Variable.Vitalite["Energie"]["Stock"] = 100
                 print("Vous avez assez dormis")
                 time.sleep(1.5)
                 break

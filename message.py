@@ -91,7 +91,7 @@ def displaySac():
     print(f"  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n")
 
     listeAction =["l", "u", "d"]
-    print(f'|| Energie :{Variable.vitalité["Energie"]["Stock"]} || Hydratation :{Variable.vitalité["Hydratation"]["Stock"]} || Satiété :{Variable.vitalité["Satiété"]["Stock"]} ||\n')
+    print(f'|| Energie :{Variable.Vitalite["Energie"]["Stock"]} || Hydratation :{Variable.Vitalite["Hydratation"]["Stock"]} || Satiete :{Variable.Vitalite["Satiete"]["Stock"]} ||\n')
     action =input("Que veux tu faire ? Sortir du sac -> L / Utiliser un objet de ton sac -> U + NomObjet / Jetter un objet de ton sac -> D + objet \n").lower()
     Variable.checkActionSac = False
     Utilities.checkAction(action, listeAction)
@@ -111,7 +111,7 @@ def displaySac():
 
 
 def die():
-    if Variable.vitalité["Energie"]["Stock"] < 0 or Variable.vitalité["Hydratation"]["Stock"] < 0 or Variable.vitalité["Satiété"]["Stock"] < 0 :
+    if Variable.Vitalite["Energie"]["Stock"] < 0 or Variable.Vitalite["Hydratation"]["Stock"] < 0 or Variable.Vitalite["Satiete"]["Stock"] < 0 :
         Utilities.clear()
         print("    ▄· ▄▌      ▄• ▄▌▄▄▄      ·▄▄▄▄  ▄▄▄ . ▄▄▄· ·▄▄▄▄")  
         print("   ▐█▪██▌▪     █▪██▌▀▄ █·    ██▪ ██ ▀▄.▀·▐█ ▀█ ██▪ ██ ")
@@ -150,9 +150,9 @@ def die():
         else :
             Variable.positionJoueur[0] = 25
             Variable.positionJoueur[1] = 75
-            Variable.vitalité["Energie"]["Stock"] = 100
-            Variable.vitalité["Hydratation"]["Stock"] = 100
-            Variable.vitalité["Satiété"]["Stock"] = 100
+            Variable.Vitalite["Energie"]["Stock"] = 100
+            Variable.Vitalite["Hydratation"]["Stock"] = 100
+            Variable.Vitalite["Satiete"]["Stock"] = 100
             Display.map1()
         
 def victory ():
