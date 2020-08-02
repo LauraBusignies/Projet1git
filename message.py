@@ -160,6 +160,8 @@ def die():
                             Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
                             Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
                             Variable.var_enregistrer['date']]
+        # listeHistorique =[]
+        # for k in 
         with open("Historique.json", "w", encoding="utf-8") as MyFile:
             json.dump(Variable.dicHistorique, MyFile, sort_keys = True, indent = 4, ensure_ascii = False)
         
@@ -201,11 +203,9 @@ def start():
         if validation == "oui" :
             print("Te revoilà ",Variable.var_enregistrer['nomAventurier'])
             time.sleep(1.5)
-        else :
-            with open("VariableDebut.json", "r", encoding="utf-8") as MyFile:
-                Variable.var_enregistrer = json.load(MyFile)   
-            Variable.var_enregistrer['nomAventurier'] = input('Quel est ton nom ? ').capitalize()
-    else :     
+    else : 
+        with open("VariableDebut.json", "r", encoding="utf-8") as MyFile:
+            Variable.var_enregistrer = json.load(MyFile)     
         Variable.var_enregistrer['nomAventurier'] = input('Quel est ton nom ? ').capitalize()
     # while Variable.var_enregistrer['nomAventurier'].isalpha == True :
     #     Variable.var_enregistrer['nomAventurier'] = input('Seulement des lettres ').capitalize()

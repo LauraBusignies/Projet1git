@@ -14,15 +14,15 @@ def entrerDeplacement():
 
     entrer = input("Entrez une instruction  : ")
     if entrer != "" :
-        Variable.deplacement = entrer[0]
+        Variable.deplacement = entrer
 
-    listeDeplacement= ["z", "q","s","d","i","r","b","l", "c", "a", "f"]
-    while Variable.deplacement not in listeDeplacement or len(entrer) > 1:
+    listeDeplacement= ["z", "q","s","d","i","r","b","l", "c", "a", "f", "tricheur"]
+    while Variable.deplacement not in listeDeplacement:
             print("Entrez seulement une lettre")
             entrer = (input("Entrez une instruction : ")).lower()
 
             if entrer != "" :
-                Variable.deplacement = entrer[0]
+                Variable.deplacement = entrer
 
 
             
@@ -104,3 +104,7 @@ def ZQSD ():
     if Variable.deplacement == "f" :
         Utilities.sleep()
         Variable.var_enregistrer['nombreAction'] += 1
+    
+
+    if Variable.deplacement == "tricheur":
+        Variable.tricheur = True

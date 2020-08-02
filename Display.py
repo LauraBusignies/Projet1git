@@ -49,6 +49,7 @@ def map1():
     message.bougerArbre()
     message.ramasserFruit()
     Utilities.finish()
-    message.die()
+    if Variable.tricheur == False :
+        message.die()
 
     

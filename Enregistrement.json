@@ -1,8 +1,8 @@
 {
     "ancienCaractere": "",
-    "leave": true,
+    "leave": false,
     "nbKey": 0,
-    "nomAventurier": "Marine",
+    "nomAventurier": "",
     "nombreAction": 0,
     "nombreDeplacement": 10,
     "objetRamasser": "",

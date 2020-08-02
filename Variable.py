@@ -132,6 +132,7 @@ contenuInventaire = []
 lettre = ""
 fruit = ""
 checkActionSac = False
+tricheur = False
 
 
 

@@ -1,5 +1,5 @@
 {
-    "compteurHistorique": 8,
+    "compteurHistorique": 9,
     "joueur1": [
         "Laura",
         "Perdu",
@@ -79,5 +79,15 @@
         32,
         32,
         "2020-08-02 17:20:09"
+    ],
+    "joueur9": [
+        "Marine",
+        "Perdu",
+        0,
+        34,
+        -2,
+        32,
+        32,
+        "2020-08-02 17:44:57"
     ]
 }
