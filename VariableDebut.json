@@ -185,7 +185,7 @@
     },
     "verificationCesar": false,
     "verificationMonkey": false,
-    "verificationMystere": true,
+    "verificationMystere": false,
     "vitalite": {
         "Energie": {
             "-": 3,
