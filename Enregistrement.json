@@ -1,10 +1,10 @@
 {
     "ancienCaractere": "",
-    "leave": true,
+    "leave": false,
     "nbKey": 0,
     "nomAventurier": "",
     "nombreAction": 0,
-    "nombreDeplacement": 16,
+    "nombreDeplacement": 0,
     "objetRamasser": "",
     "positionArbreAnanas": [
         7,
@@ -104,8 +104,8 @@
     ],
     "positionEnigme": [],
     "positionJoueur": [
-        12,
-        78
+        25,
+        75
     ],
     "positionSolAnanas": [],
     "positionSolBanane": [],
@@ -189,15 +189,15 @@
     "vitalite": {
         "Energie": {
             "-": 3,
-            "Stock": 52
+            "Stock": 100
         },
         "Hydratation": {
             "-": 2,
-            "Stock": 68
+            "Stock": 100
         },
         "Satiete": {
             "-": 2,
-            "Stock": 68
+            "Stock": 100
         }
     }
 }

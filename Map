@@ -7,9 +7,9 @@
 |MMMMMMMM            ≈≈ ≈≈≈≈≈≈               γ     γ   γ      γ   γ   γ   γ      MMMMMMMM|  [R] Ramasser
 |MMMMMMMM             ≈≈≈≈≈≈≈≈≈≈≈≈          γ      γ     γ   γ       γ     γ       MMMMMM|  [A] Remplir bouteille
 |MMMMMM              |  ________  |               γ      γ    γ      γ        γ     MMMMM|  [F] Dormir
-|MMMM                | | ≈≈≈ ≈≈≈| |          γ      γ         γ  γ   γ   γ  γ          █M|  [E] Sauvegarder
-|MMM                    ≈≈≈≈≈≈                 γ    γ     γ        γ                   ██|  [C] Charger sauvegarde
-|▒██                  ≈≈≈≈≈≈                        γ   γ      γ    γ  γ                █|  [B] Secouer un arbre
+|MMMM                | | ≈≈≈ ≈≈≈| |          γ      γ         γ  γ   γ   γ  γ          █M|  [B] Secouer un arbre
+|MMM                    ≈≈≈≈≈≈                 γ    γ     γ        γ                   ██|  [l] Leave partie
+|▒██                  ≈≈≈≈≈≈                        γ   γ      γ    γ  γ                █|  
 |▒▒█                      ≈≈╔═╗ ≈≈≈≈≈≈             γ        γ                           █|  [I] Inventaire
 |▒▒█                     ≈  ║♪║ ≈≈≈≈≈≈                                                  █|     [L] Quitter inventaire
 |▒▒█                      ≈≈≈   ≈≈≈≈                                                   ■ |     [U] Utiliser Objet
