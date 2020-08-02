@@ -1,22 +1,41 @@
-import Utilities
 import time
+import Variable
+# Obtenir l'heure et la date locale
+now = time.localtime(time.time())
+listeHeure = ['2019-08-01 21:24:33', '2020-08-01 13:24:33', '2020-03-01 21:24:33', '2022-08-01 21:24:33']
+now = time.localtime(time.time())
+listeHeure.append(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time())))
+dictionnaire = {}
+compteur = 1
+dictionnaire[f'joueur{compteur}'] = [Variable.var_enregistrer['nomAventurier'],
+                                    Variable.var_enregistrer['resultatJeu'],
+                                    Variable.var_enregistrer['nombreAction'],
+                                    Variable.var_enregistrer['nombreDeplacement'],
+                                    Variable.var_enregistrer['vitalite']['Energie']['Stock'],
+                                    Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
+                                    Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
+                                    Variable.var_enregistrer['date']]
 
-def victory ():
-    print("  o              o   __o__       o__ __o    ____o__ __o____     o__ __o        o__ __o    \o       o/ ")
-    print(" <|>            <|>    |        /v     v\    /   \   /   \     /v     v\      <|     v\    v\     /v  ")
-    print(" < >            < >   / \      />                 \o/         />       <\     / \     <\    <\   />   ")
-    print("  \o            o/    \o/    o/                    |        o/           \o   \o/     o/      \o/     ")
-    print("   v\          /v      |    <|                    < >      <|             |>   |__  _<|        |      ")
-    print("    <\        />      < >    \\                     |        \\\           //    |       \      / \     ")
-    print("      \o    o/         |       \                   o          \         /     <o>       \o    \o/     ")
-    print("       v\  /v          o        o       o         <|           o       o       |         v\    |      ")
-    print("        <\/>         __|>_      <\__ __/>         / \          <\__ __/>      / \         <\  / \   ") 
+dictionnaire[f'joueur2'] = [Variable.var_enregistrer['nomAventurier'],
+                                    Variable.var_enregistrer['resultatJeu'],
+                                    Variable.var_enregistrer['nombreAction'],
+                                    Variable.var_enregistrer['nombreDeplacement'],
+                                    Variable.var_enregistrer['vitalite']['Energie']['Stock'],
+                                    Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
+                                    Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
+                                    Variable.var_enregistrer['date']]
 
-counter = 0
-while counter != 10 :
-    counter += 1
-    Utilities.clear()
-    time.sleep(0.1)
-    victory()
-    
-            
+dictionnaire[f'joueur3'] = [Variable.var_enregistrer['nomAventurier'],
+                                    Variable.var_enregistrer['resultatJeu'],
+                                    Variable.var_enregistrer['nombreAction'],
+                                    Variable.var_enregistrer['nombreDeplacement'],
+                                    Variable.var_enregistrer['vitalite']['Energie']['Stock'],
+                                    Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
+                                    Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
+                                    Variable.var_enregistrer['date']]
+
+for k in dictionnaire :
+    print(k)
+print(dictionnaire)
+listeHeure.sort()
+print(listeHeure)

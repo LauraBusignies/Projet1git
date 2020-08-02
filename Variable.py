@@ -1,45 +1,142 @@
+var_enregistrer = {
+    
+    'positionArbreBanane' : [],
+    'positionArbreMangue' : [],
+    'positionArbreAnanas' : [],
+
+    'positionSolAnanas' : [],
+    'positionSolBanane' : [],
+    'positionSolMangue' : [],
+
+    'positionEnigme' : [],
+    'positionJoueur' : [25, 75],
+
+    'ancienCaractere' : "" ,  
+    'nbKey' : 0,
+    'objetRamasser' : "",
+    'nomAventurier' : "",
+    'date' : "",
+    'leave' : False,
+    'nombreDeplacement' : 0,
+    'nombreAction' : 0,
+    'resultatJeu' : "",
+
+    
+    'verificationMonkey' : False,
+    'verificationMystere' : True,
+    'verificationCesar' : False,
+
+    'vitalite' : 
+            {"Energie" :{
+                "Stock" : 100,
+                "-" : 3},
+            "Hydratation" :{
+                "Stock" : 100,
+                "-" : 2},
+            "Satiete" :{
+                "Stock" : 100,
+                "-" : 2}},
+
+    'sac_a_dos' : { 
+        "Chaussure" :{ 
+            "nom" : "Chaussure",
+            "nombre" : 0,
+            "+" : 0 ,
+            "Stockage" : None,
+            "StockageM" : None,
+            "Utilité" : "Marcher sur les cailloux",
+            "Ramassage": "Va savoir ..",
+            "message": "Vous avez jettez vos chaussures",
+            "positionY" : None,
+            "positionX" : None
+
+                    },
+
+        "Bouteille" :{ 
+            "nom" : "Bouteille",
+            "nombre" : 1,
+            "+" : 20,
+            "Stockage" : 100,
+            "StockageM" : 100,
+            "Utilité" : "Hydratation",
+            "Ramassage": "Vous avez trouvé une bouteille d'eau",
+            "message": "Oula vous avez jetter votre bouteille, vous allez mourir de soif !",
+            "positionY" : None,
+            "positionX" : None
+
+                    },
+        "Couteau" :{ 
+            "nom" : "Couteau",
+            "nombre" : 1,
+            "Stockage" : None,
+            "StockageM" : None,
+            "Utilité" : "A toi de trouver",
+            "Ramassage": "Vous avez trouvé un couteau",
+            "message": "Vous avez jettez votre couteau, vous allez en avoir besoin",
+            "positionY" : None,
+            "positionX" : None
+
+                },
+        "Banane" :{
+            "nom" : "Banane",
+            "nombre" : 2,
+            "+" : 14,        
+            "Stockage" : None,
+            "StockageM" : None,
+            "Utilité" : "Satiete",
+            "Ramassage": "Vous avez trouvé une Banane, miam !",
+            "message": "Vous avez jettez une Banane",
+            "positionY" : None,
+            "positionX" : None
+
+    },
+        "Ananas" :{ 
+            "nom" : "Ananas",
+            "nombre" : 1,
+            "+" : 20,
+            "Stockage" : None,
+            "StockageM" : None,
+            "Utilité" : "Satiete",
+            "Ramassage": "Vous avez trouvé un Ananas, miam !",
+            "message": "Vous avez jettez un Ananas",
+            "positionY" : None,
+            "positionX" : None
+    },
+        "Mangue" :{ 
+            "nom" : "Mangue",
+            "nombre" : 5,
+            "+" : 25,
+            "Stockage" : None,
+            "StockageM" : None,
+            "Utilité" : "Satiete",
+            "Ramassage": "Vous avez trouvé un Mangue, miam !",
+            "message": "Vous avez jettez une Mangue",
+            "positionY" : None,
+            "positionX" : None
+}}}
+
+
+dicHistorique = {'compteurHistorique' : 0}
 
 deplacement = ""
 liste_Map = []
-positionJoueur = [25, 75]
 compteurStock = 0
-ancienCaractere = ""
+
 listeArbre = ["\u001b[38;5;64mγ\033[0m", "\u001b[38;5;76m↑\033[0m", "\u001b[38;5;46m♣\033[0m"]
 listeFruit = ["Ananas", "Banane", "Mangue"]
-positionAbreAnanas = []
-positionAbreBanane = []
-positionAbreMangue = []
-positionSolAnanas = []
-positionSolBanane = []
-positionSolMangue = []
+
 validationPositionFruit = False
 validationPositionSol = False
-objetRamasser = ""
 
 contenuInventaire = []
 lettre = ""
 fruit = ""
 checkActionSac = False
 
-nbKey = 3
-verificationMonkey = False
-verificationMystere = False
-verificationCesar = False 
-positionEnigme = []
 
-Vitalite = {
-    "Energie" :{
-        "Stock" : 100,
-        "-" : 3
-    },
-    "Hydratation" :{
-        "Stock" : 100,
-        "-" : 2
-    },
-    "Satiete" :{
-        "Stock" : 100,
-        "-" : 2
-    }}
+
+
+
 
 color_character = {
     " " : {
@@ -128,7 +225,7 @@ color_character = {
         "colorS" : "\u001b[38;5;8m■",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
-        "Erreur" : "Tu est pieds nue !"
+        "Erreur" : "Tu ne peux pas aller sur ses cailloux !"
     },   
     "♪" :{
         "name" : "clé" , 
@@ -173,15 +270,23 @@ color_character = {
     "_" :{
         "name" : "bordure" , 
         "image" : "—",
-        "colorS" : "\u001b[38;5;120m—",
+        "colorS" : "\u001b[38;5;214m—",
         "colorE" : "\033[0m", 
         "CanWalk" : True,
         "Erreur" : None
     },  
+    "—" :{
+        "name" : "bordure" , 
+        "image" : "—",
+        "colorS" : "\u001b[38;5;214m—",
+        "colorE" : "\033[0m", 
+        "CanWalk" : True,
+        "Erreur" : None
+    }, 
     "|" :{
         "name" : "bordure" , 
         "image" : "|",
-        "colorS" : "\u001b[38;5;120m|",
+        "colorS" : "\u001b[38;5;214m|",
         "colorE" : "\033[0m", 
         "CanWalk" : False,
         "Erreur" : "Quelque chose bloque.."
@@ -196,81 +301,3 @@ color_character = {
     } 
 }
 
-sac_a_dos = { 
-    "Chaussure" :{ 
-        "nom" : "Chaussure",
-        "nombre" : 0,
-        "+" : 0 ,
-        "Stockage" : None,
-        "StockageM" : None,
-        "Utilité" : "Marcher sur les cailloux",
-        "Ramassage": "Va savoir ..",
-        "message": "Vous avez jettez vos chaussures",
-        "positionY" : None,
-        "positionX" : None
-
-                },
-
-    "Bouteille" :{ 
-        "nom" : "Bouteille",
-        "nombre" : 1,
-        "+" : 20,
-        "Stockage" : 100,
-        "StockageM" : 100,
-        "Utilité" : "Hydratation",
-        "Ramassage": "Vous avez trouvé une bouteille d'eau",
-        "message": "Oula vous avez jetter votre bouteille, vous allez mourir de soif !",
-        "positionY" : None,
-        "positionX" : None
-
-                },
-    "Couteau" :{ 
-        "nom" : "Couteau",
-        "nombre" : 1,
-        "Stockage" : None,
-        "StockageM" : None,
-        "Utilité" : "A toi de trouver",
-        "Ramassage": "Vous avez trouvé un couteau",
-        "message": "Vous avez jettez votre couteau, vous allez en avoir besoin",
-        "positionY" : None,
-        "positionX" : None
-
-            },
-    "Banane" :{
-        "nom" : "Banane",
-        "nombre" : 2,
-        "+" : 14,        
-        "Stockage" : None,
-        "StockageM" : None,
-        "Utilité" : "Satiete",
-        "Ramassage": "Vous avez trouvé une Banane, miam !",
-        "message": "Vous avez jettez une Banane",
-        "positionY" : None,
-        "positionX" : None
-
-},
-    "Ananas" :{ 
-        "nom" : "Ananas",
-        "nombre" : 1,
-        "+" : 20,
-        "Stockage" : None,
-        "StockageM" : None,
-        "Utilité" : "Satiete",
-        "Ramassage": "Vous avez trouvé un Ananas, miam !",
-        "message": "Vous avez jettez un Ananas",
-        "positionY" : None,
-        "positionX" : None
-},
-    "Mangue" :{ 
-        "nom" : "Mangue",
-        "nombre" : 5,
-        "+" : 25,
-        "Stockage" : None,
-        "StockageM" : None,
-        "Utilité" : "Satiete",
-        "Ramassage": "Vous avez trouvé un Mangue, miam !",
-        "message": "Vous avez jettez une Mangue",
-        "positionY" : None,
-        "positionX" : None
-}
-}

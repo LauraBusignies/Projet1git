@@ -7,7 +7,7 @@ def map1():
     with open("Map", "r", encoding = "utf-8") as map : 
         displayMap = [line for line in map]
     Variable.liste_Map = displayMap
-    if len(Variable.positionAbreBanane) == 0 :
+    if len(Variable.var_enregistrer['positionArbreBanane']) == 0 :
         Nourriture.globaleObjet()
     axeY = 0
     # displayMap = Variable.liste_Map
@@ -17,18 +17,18 @@ def map1():
             caractere = Utilities.caracterePosition(axeY, axeX, caractere)
 
 
-            for k in Variable.sac_a_dos:
-                if axeY == Variable.sac_a_dos[k]["positionY"] and axeX == Variable.sac_a_dos[k]["positionX"]:
+            for k in Variable.var_enregistrer['sac_a_dos']:
+                if axeY == Variable.var_enregistrer['sac_a_dos'][k]["positionY"] and axeX == Variable.var_enregistrer['sac_a_dos'][k]["positionX"]:
                     caractere = "×"
             if caractere in Variable.color_character :
                 caractere = f'{Variable.color_character[caractere]["colorS"]}{Variable.color_character[caractere]["colorE"]}'
             if caractere == "\u001b[38;5;226m♪\033[0m" :
-                if axeY in Variable.positionEnigme and axeX in Variable.positionEnigme :
+                if axeY in Variable.var_enregistrer['positionEnigme'] and axeX in Variable.var_enregistrer['positionEnigme'] :
                     caractere = "\u001b[38;5;240m♪\033[0m"
-            if caractere == "\u001b[38;5;226m♫\033[0m" and Variable.nbKey != 3:
-                caractere = "♫"
+            if caractere == "\u001b[38;5;226m♫\033[0m" and Variable.var_enregistrer['nbKey'] != 3:
+                caractere = "\u001b[38;5;240m♫\033[0m"
 
-            if Variable.positionJoueur[0] == axeY and Variable.positionJoueur[1] == axeX :
+            if Variable.var_enregistrer['positionJoueur'][0] == axeY and Variable.var_enregistrer['positionJoueur'][1] == axeX :
                 Variable.ancienCaractere = caractere
                 if caractere == "\u001b[38;5;64mγ\033[0m" :
                     caractere = "\u001b[38;5;64mγ\033[0m"
@@ -42,7 +42,7 @@ def map1():
             print(caractere, end="")
         axeY += 1
     print()
-    Utilities.displayVitalite()
+    Utilities.displayvitalite()
     print()
     Utilities.enigmeMystereCesarSinge ()
     message.arbre()

@@ -4,7 +4,8 @@ import os
 import random
 import Utilities
 import message
-
+import json
+import sys
 
 def clear():
     os.system('cls') #pour Windows
@@ -15,7 +16,7 @@ def entrerDeplacement():
     if entrer != "" :
         Variable.deplacement = entrer[0]
 
-    listeDeplacement= ["z", "q","s","d","o","r","b","e", "c", "a", "f"]
+    listeDeplacement= ["z", "q","s","d","i","r","b","l", "c", "a", "f"]
     while Variable.deplacement not in listeDeplacement or len(entrer) > 1:
             print("Entrez seulement une lettre")
             entrer = (input("Entrez une instruction : ")).lower()
@@ -27,86 +28,79 @@ def entrerDeplacement():
             
 def ZQSD ():
     if Variable.deplacement == "z" :
-        prevision = Variable.liste_Map[Variable.positionJoueur[0]-1][Variable.positionJoueur[1]]
+        prevision = Variable.liste_Map[Variable.var_enregistrer['positionJoueur'][0]-1][Variable.var_enregistrer['positionJoueur'][1]]
         if prevision in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
                 time.sleep(1.5)
             else :
-                Variable.positionJoueur[0] -= 1
-                Utilities.VitaliteJoeur()
+                Variable.var_enregistrer['positionJoueur'][0] -= 1
+                Utilities.vitaliteJoueur()
                 clear()
+                Variable.var_enregistrer['nombreDeplacement'] += 1
 
 
     if Variable.deplacement == "s" :
-        prevision = Variable.liste_Map[Variable.positionJoueur[0]+1][Variable.positionJoueur[1]]
+        prevision = Variable.liste_Map[Variable.var_enregistrer['positionJoueur'][0]+1][Variable.var_enregistrer['positionJoueur'][1]]
         if prevision in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
                 time.sleep(1.5)
             else :
-                Variable.positionJoueur[0] += 1
-                Utilities.VitaliteJoeur()
+                Variable.var_enregistrer['positionJoueur'][0] += 1
+                Utilities.vitaliteJoueur()
                 clear()
+                Variable.var_enregistrer['nombreDeplacement'] += 1
 
 
     if Variable.deplacement == "d" :
-        prevision = Variable.liste_Map[Variable.positionJoueur[0]][Variable.positionJoueur[1]+1]
+        prevision = Variable.liste_Map[Variable.var_enregistrer['positionJoueur'][0]][Variable.var_enregistrer['positionJoueur'][1]+1]
         if prevision in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
                 time.sleep(1.5)
             else :
-                Variable.positionJoueur[1] += 1
-                Utilities.VitaliteJoeur()
+                Variable.var_enregistrer['positionJoueur'][1] += 1
+                Utilities.vitaliteJoueur()
                 clear()
+                Variable.var_enregistrer['nombreDeplacement'] += 1
 
 
     if Variable.deplacement == "q" :
-        prevision = Variable.liste_Map[Variable.positionJoueur[0]][Variable.positionJoueur[1]-1]
+        prevision = Variable.liste_Map[Variable.var_enregistrer['positionJoueur'][0]][Variable.var_enregistrer['positionJoueur'][1]-1]
         if prevision in Variable.color_character :
             if Variable.color_character[prevision]["CanWalk"] == False :
                 print (Variable.color_character[prevision]["Erreur"])
                 time.sleep(1.5)
             else :
-                Variable.positionJoueur[1] -= 1
-                Utilities.VitaliteJoeur()
+                Variable.var_enregistrer['positionJoueur'][1] -= 1
+                Utilities.vitaliteJoueur()
                 clear()
+                Variable.var_enregistrer['nombreDeplacement'] += 1
             
-    if Variable.deplacement == "o":
+    if Variable.deplacement == "i":
         message.displaySac()
+        Variable.var_enregistrer['nombreAction'] += 1
 
     if Variable.deplacement == "a" :
         Utilities.remplirBouteille()
+        Variable.var_enregistrer['nombreAction'] += 1
 
-    if Variable.deplacement == "e" :
+    if Variable.deplacement == "l" :
         try:
-            with open("Enregistrement", "w", encoding="utf-8") as MyFile:
-                MyFile.write(f'JoueurY : {Variable.positionJoueur[0]}\n')
-                MyFile.write(f'X : {Variable.positionJoueur[1]}\n')
-                print("La partie a été sauvegardé")
+            Variable.var_enregistrer['leave'] = True
+            with open("Enregistrement.json", "w", encoding="utf-8") as MyFile:
+                json.dump(Variable.var_enregistrer, MyFile, sort_keys = True, indent = 4, ensure_ascii = False)
+                print("La partie a été sauvegardée")
                 time.sleep(2.0)
+                
         except :
-            print("La partie n'a pas été sauvegardé")
+            print("La partie n'a pas été sauvegardée")
             time.sleep(2.0)
+        Variable.var_enregistrer['nombreAction'] += 1
+        sys.exit(0)
 
-    if Variable.deplacement == "c" :
-        try:
-            with open("Enregistrement", "r", encoding="utf-8") as MyFile:
-                Line = MyFile.readline()[:-1]
-                while Line:
-                    Separator = Line.index(":")
-                    DataName = Line[:Separator].strip()
-                    DataValue = Line[Separator + 1:].strip()
-                    if DataName == "JoueurY":
-                        Variable.positionJoueur[0] = int(DataValue)
-                    elif DataName == "X":
-                        Variable.positionJoueur[1] = int(DataValue)
-                    Line = MyFile.readline()
-            # print(f"Position : {Variable.positionJoueur[0]} x {Variable.positionJoueur[1]}" )
-        except: 
-            print("On peut pas charger la sauvegarde")
-            time.sleep(2.0)
     
     if Variable.deplacement == "f" :
         Utilities.sleep()
+        Variable.var_enregistrer['nombreAction'] += 1

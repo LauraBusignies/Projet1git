@@ -1,19 +1,19 @@
  ————————————————————————————————————————————————————————————————————————————————————————
-|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|
-|MMMMMMMMMMMMMMMMMMMMMMMMMMMM≈≈≈≈≈   ╔═╗       γ    γ   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|
-|MMMMMMMMMMMMMMMMMMM     ≈≈≈≈≈       ║♫║     γ    γ      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|
-|MMMMMMMMMM          ≈≈≈≈≈                  γ     γ γ    γ  γ   MMMMMMMMMMMMM╔═╗MMMMMMMMM|
-|MMMMMMMM           ≈≈≈  ≈≈≈≈≈≈                γ    γ   γ     γ          MMMM║♪║MMMMMMMMM|
-|MMMMMMMM            ≈≈ ≈≈≈≈≈≈               γ     γ   γ      γ   γ   γ   γ      MMMMMMMM|
-|MMMMMMMM             ≈≈≈≈≈≈≈≈≈≈≈≈          γ      γ     γ   γ       γ     γ       MMMMMM|
-|MMMMMM              |  ________  |               γ      γ    γ      γ        γ     MMMMM|
-|MMMM                | | ≈≈≈ ≈≈≈| |          γ      γ         γ  γ   γ   γ  γ          █M|
-|MMM                    ≈≈≈≈≈≈                 γ    γ     γ        γ                   ██|
-|▒██                  ≈≈≈≈≈≈                        γ   γ      γ    γ  γ                █|
-|▒▒█                      ≈≈╔═╗ ≈≈≈≈≈≈             γ        γ                           █|
-|▒▒█                     ≈  ║♪║ ≈≈≈≈≈≈                                                  █|
-|▒▒█                      ≈≈≈   ≈≈≈≈                                                   ■ |
-|▒▒█                        ≈≈≈  ≈≈≈≈                                            ■ ■ ■ ■ |
+|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|  Commandes :
+|MMMMMMMMMMMMMMMMMMMMMMMMMMMM≈≈≈≈≈   ╔═╗       γ    γ   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|  [Z] Monter
+|MMMMMMMMMMMMMMMMMMM     ≈≈≈≈≈       ║♫║     γ    γ      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|  [S] Descendre
+|MMMMMMMMMM          ≈≈≈≈≈                  γ     γ γ    γ  γ   MMMMMMMMMMMMM╔═╗MMMMMMMMM|  [Q] Gauche
+|MMMMMMMM           ≈≈≈  ≈≈≈≈≈≈                γ    γ   γ     γ          MMMM║♪║MMMMMMMMM|  [D] Droite 
+|MMMMMMMM            ≈≈ ≈≈≈≈≈≈               γ     γ   γ      γ   γ   γ   γ      MMMMMMMM|  [R] Ramasser
+|MMMMMMMM             ≈≈≈≈≈≈≈≈≈≈≈≈          γ      γ     γ   γ       γ     γ       MMMMMM|  [A] Remplir bouteille
+|MMMMMM              |  ________  |               γ      γ    γ      γ        γ     MMMMM|  [F] Dormir
+|MMMM                | | ≈≈≈ ≈≈≈| |          γ      γ         γ  γ   γ   γ  γ          █M|  [E] Sauvegarder
+|MMM                    ≈≈≈≈≈≈                 γ    γ     γ        γ                   ██|  [C] Charger sauvegarde
+|▒██                  ≈≈≈≈≈≈                        γ   γ      γ    γ  γ                █|  [B] Secouer un arbre
+|▒▒█                      ≈≈╔═╗ ≈≈≈≈≈≈             γ        γ                           █|  [I] Inventaire
+|▒▒█                     ≈  ║♪║ ≈≈≈≈≈≈                                                  █|     [L] Quitter inventaire
+|▒▒█                      ≈≈≈   ≈≈≈≈                                                   ■ |     [U] Utiliser Objet
+|▒▒█                        ≈≈≈  ≈≈≈≈                                            ■ ■ ■ ■ |     [D] Supprimer Objet
 |▒▒▒███                           ≈≈≈≈≈≈         ↑        ↑                    ■ ■ ■ ■ ■ |
 |▒▒▒▒▒█      ♣   ♣       ♣      ♣     ≈≈≈≈≈≈≈        ↑  ↑     ↑    ↑          ■ ■ ■ ■ ■ ■|
 |▒▒▒▒▒█    ♣    ♣      ♣     ♣      ≈≈≈≈≈≈≈      ↑      ↑   ↑               ■ ■ ■ ■ ■ ■ ■|

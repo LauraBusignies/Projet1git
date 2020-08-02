@@ -97,8 +97,8 @@ def mainMystereGame():
         yes_or_no=input("Tant que tu ne diras pas oui, on sera coincé ici !").lower()
     while counter_game != 3 :
         for loop in range (3) :
-            mystery_number = random.randint(48, 50)
-            try_number = random.randint(8,10)
+            mystery_number = random.randint(0, 50)
+            try_number = random.randint(5,10)
             counter_game += 1
 
             clear()
@@ -128,10 +128,10 @@ def mainMystereGame():
                 counter = 0
                 break 
 
-    Variable.verificationMystere = True 
-    Variable.nbKey += 1
-    Variable.positionEnigme.append(Variable.positionJoueur[0])
-    Variable.positionEnigme.append(Variable.positionJoueur[1])
+    Variable.var_enregistrer['verificationMystere'] = True 
+    Variable.var_enregistrer['nbKey'] += 1
+    Variable.var_enregistrer['positionEnigme'].append(Variable.var_enregistrer['positionJoueur'][0])
+    Variable.var_enregistrer['positionEnigme'].append(Variable.var_enregistrer['positionJoueur'][1])
 
     key()
  
@@ -250,10 +250,10 @@ def mainCesar():
             time.sleep(1.0)
             key()
             réponse = "non"
-            Variable.verificationCesar = True
-            Variable.nbKey += 1
-            Variable.positionEnigme.append(Variable.positionJoueur[0])
-            Variable.positionEnigme.append(Variable.positionJoueur[1])
+            Variable.var_enregistrer['verificationCesar'] = True
+            Variable.var_enregistrer['nbKey'] += 1
+            Variable.var_enregistrer['positionEnigme'].append(Variable.var_enregistrer['positionJoueur'][0])
+            Variable.var_enregistrer['positionEnigme'].append(Variable.var_enregistrer['positionJoueur'][1])
 
 
 
@@ -367,8 +367,8 @@ def mainFizzBuzz():
         clear()
         print("Bravo tout les singes ont perdu !")
         key()
-        Variable.verificationMonkey = True
-        Variable.nbKey += 1
-        Variable.positionEnigme.append(Variable.positionJoueur[0])
-        Variable.positionEnigme.append(Variable.positionJoueur[1])
+        Variable.var_enregistrer['verificationMonkey'] = True
+        Variable.var_enregistrer['nbKey'] += 1
+        Variable.var_enregistrer['positionEnigme'].append(Variable.var_enregistrer['positionJoueur'][0])
+        Variable.var_enregistrer['positionEnigme'].append(Variable.var_enregistrer['positionJoueur'][1])
 
