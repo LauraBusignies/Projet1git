@@ -321,32 +321,51 @@ def finish():
             FonctionPrint.victory() # ligne 264
             Variable.var_enregistrer['resultatJeu'] = 'Victoire'
             Variable.var_enregistrer['date'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-            try :
-                with open("Historique.json", "r", encoding="utf-8") as MyFile:
-                    Variable.dicHistorique = json.load(MyFile)
-            except : 
-                pass
-            # Sauvegarde des scores du jeu
-            Variable.dicHistorique['compteurHistorique'] += 1
-            Variable.dicHistorique[f'joueur{Variable.dicHistorique["compteurHistorique"]}'] = [Variable.var_enregistrer['nomAventurier'],
-                                Variable.var_enregistrer['resultatJeu'],
-                                Variable.var_enregistrer['nombreAction'],
-                                Variable.var_enregistrer['nombreDeplacement'],
-                                Variable.var_enregistrer['vitalite']['Energie']['Stock'],
-                                Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
-                                Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
-                                Variable.var_enregistrer['date']]
+        # J'enregistre si le joueur a gagné ou non et la date pour l'historique
+        Variable.var_enregistrer['resultatJeu'] = 'Defaite'
+        Variable.var_enregistrer['date'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
 
-            # Vérification de la capacité de l'historique                 
-            compteur = -1
-            for k in Variable.dicHistorique :
-                compteur += 1
-            if compteur == 11 :
-                for k in Variable.dicHistorique :
-                    del Variable.dicHistorique[k]
-                    break
-            with open("Historique.json", "w", encoding="utf-8") as MyFile:
-                json.dump(Variable.dicHistorique, MyFile, sort_keys = True, indent = 4, ensure_ascii = False)
+        #J 'utilise le try dans la possibilité où l'historique est vide
+        # Ma variable dicHistorique prend les données du fichier Historique
+        try :
+            with open("Historique.json", "r", encoding="utf-8") as MyFile:
+                Variable.dicHistorique = json.load(MyFile)
+        except : 
+            pass
+
+        # J'ajoute les nouveaux score 
+        Variable.dicHistorique['compteurHistorique'] += 1
+        Variable.dicHistorique[f'joueur{Variable.dicHistorique["compteurHistorique"]}'] = [Variable.var_enregistrer['nomAventurier'],
+                            Variable.var_enregistrer['resultatJeu'],
+                            Variable.var_enregistrer['nombreAction'],
+                            Variable.var_enregistrer['nombreDeplacement'],
+                            Variable.var_enregistrer['vitalite']['Energie']['Stock'],
+                            Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
+                            Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
+                            Variable.var_enregistrer['date']]
+
+        # Je verifie que mon historique n'est pas plus grand que 10 joueur, "compteur = -1" car l'historique contient une variable qui n'est pas un score
+        # compteur = -1
+        # for k in Variable.dicHistorique :
+        #     compteur += 1
+        # if compteur >= 10 :
+        #     Variable.var_enregistrer['listeHistorique'] = []
+        #     # Si mon historique > 10 je supprime le joueur à la date la plus ancienne
+        #     try :
+        #         for k in Variable.dicHistorique:
+        #             Variable.var_enregistrer['listeHistorique'].append(Variable.dicHistorique[k][7])
+        #         #J'ajoute les date a une liste, je la tri, la valeur qui correspond a la date la plus ancienne est supprimée
+        #         Variable.var_enregistrer['listeHistorique'].sort()
+        #         print(Variable.dicHistorique)
+        #         for k in Variable.dicHistorique :
+        #             if Variable.dicHistorique[k][7] == Variable.var_enregistrer['listeHistorique'][0] :
+        #                 del Variable.dicHistorique[k]
+        #                 break
+        #     except :
+        #         pass
+        # J'enregistre la nouvel historique dans le fichier json
+        with open("Historique.json", "w", encoding="utf-8") as MyFile:
+            json.dump(Variable.dicHistorique, MyFile, sort_keys = True, indent = 4, ensure_ascii = False)
             time.sleep(3.0)
             sys.exit (0)
 

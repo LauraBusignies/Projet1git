@@ -20,6 +20,7 @@ var_enregistrer = {
     'nombreDeplacement' : 0,
     'nombreAction' : 0,
     'resultatJeu' : "",
+    "listeHistorique" : 0,
 
     
     'verificationMonkey' : False,

@@ -5,6 +5,7 @@
     "nomAventurier": "",
     "nombreAction": 0,
     "nombreDeplacement": 0,
+    "listeHistorique" : 0,
     "objetRamasser": "",
     "positionArbreAnanas": [
         7,

@@ -225,24 +225,31 @@ def die():
                             Variable.var_enregistrer['date']]
 
         # Je verifie que mon historique n'est pas plus grand que 10 joueur, "compteur = -1" car l'historique contient une variable qui n'est pas un score
-        compteur = -1
-        for k in Variable.dicHistorique :
-            compteur += 1
-        if compteur >= 10 :
-            listeHistorique = []
-            # Si mon historique > 10 je supprime le joueur à la date la plus ancienne
-            try :
-                for k in Variable.dicHistorique:
-                    listeHistorique.append(Variable.dicHistorique[k][7])
-                #J'ajoute les date a une liste, je la tri, et la valeur qui correspond a la date la plus ancienne est supprimée
-                listeHistorique.sort()
-                print(Variable.dicHistorique)
-                for k in Variable.dicHistorique :
-                    if Variable.dicHistorique[k][7] == listeHistorique[0] :
-                        del Variable.dicHistorique[k]
-                        break
-            except :
-                pass
+        # compteur = -1
+        # for k in Variable.dicHistorique :
+        #     compteur += 1
+
+        # while compteur >= 11 :
+        #     Variable.var_enregistrer['listeHistorique'] = []
+        #     # Si mon historique > 10 je supprime le joueur à la date la plus ancienne
+        #     for k in Variable.dicHistorique:
+        #         if k == 'compteurHistorique' :
+        #             pass
+        #         else :
+        #             Variable.var_enregistrer['listeHistorique'].append(Variable.dicHistorique[k][7])
+        #     #J'ajoute les date a une liste, je la tri, et la valeur qui correspond a la date la plus ancienne est supprimée
+        #     Variable.var_enregistrer['listeHistorique'].sort()
+        #     print(Variable.dicHistorique)
+        #     for k in Variable.dicHistorique :
+        #         try :
+        #             if Variable.dicHistorique[k][7] == Variable.var_enregistrer['listeHistorique'][0] :
+        #                 del Variable.dicHistorique[k]
+        #                 compteur += -1
+        #                 break
+        #         except :
+        #             pass
+
+
         # J'enregistre la nouvel historique dans le fichier json
         with open("Historique.json", "w", encoding="utf-8") as MyFile:
             json.dump(Variable.dicHistorique, MyFile, sort_keys = True, indent = 4, ensure_ascii = False)
