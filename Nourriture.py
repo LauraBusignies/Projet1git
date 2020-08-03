@@ -2,6 +2,8 @@ import random
 import Variable
 
 #__________________________________________________________________________________________________________________________
+
+# Attribution des objets random dans les arbres
 def ObjetAnanas():
 
         for loop in range(20) :
@@ -13,6 +15,7 @@ def ObjetAnanas():
             Variable.var_enregistrer['positionArbreAnanas'].append(emplacementY)
             Variable.var_enregistrer['positionArbreAnanas'].append(emplacementX)
 
+# Attribution des objets random dans les arbres
 def ObjetMangue():
 
         for loop in range(20) :
@@ -24,6 +27,7 @@ def ObjetMangue():
             Variable.var_enregistrer['positionArbreMangue'].append(emplacementY)
             Variable.var_enregistrer['positionArbreMangue'].append(emplacementX)
 
+# Attribution des objets random dans les arbres
 def ObjetBanane():
 
         for loop in range(20) :
@@ -42,6 +46,7 @@ def globaleObjet():
     ObjetMangue()
 #__________________________________________________________________________________________________________________________
 
+# Vérification que la position du joueur est égal a un arbre avec un fruit
 def verificationPositionArbre() :
 
     Variable.validationPositionFruit = False
@@ -64,6 +69,7 @@ def verificationPositionArbre() :
         compteur += 2
 #__________________________________________________________________________________________________________________________
 
+# Vérification que la position du joueur est égal a un fruit au sol
 def verificationPositionObjet() :
 
     Variable.validationPositionSol = False
@@ -89,9 +95,7 @@ def verificationPositionObjet() :
         compteur += 2
 #__________________________________________________________________________________________________________________________
 
-# Supprimer la position des objet de la liste
-#__________________________________________________________________________________________________________________________
-
+# Supprimer la position du fruit dans l'arbre pour l'attribuer dans la liste des fruits au sol
 def supprimerPositionArbreAnanas():
     compteur = 0
     for i in (Variable.var_enregistrer['positionArbreAnanas']):
@@ -126,6 +130,7 @@ def supprimerPositionArbreMangue():
         compteur += 2
 #_____________________________________________________________________________________________________________________________
 
+# Supprimer le fruit de la liste au sol si le joueur le ramasse
 def supprimerObjet():
 
     compteur = 0
@@ -152,5 +157,3 @@ def supprimerObjet():
             break
         compteur += 1
 
-
-#_____________________________________________________________________________________________________________________________

@@ -1,10 +1,10 @@
 {
     "ancienCaractere": "",
-    "leave": false,
+    "leave": true,
     "nbKey": 0,
-    "nomAventurier": "",
+    "nomAventurier": "Laura",
     "nombreAction": 0,
-    "nombreDeplacement": 10,
+    "nombreDeplacement": 30,
     "objetRamasser": "",
     "positionArbreAnanas": [
         7,
@@ -104,8 +104,8 @@
     ],
     "positionEnigme": [],
     "positionJoueur": [
-        19,
-        71
+        11,
+        59
     ],
     "positionSolAnanas": [],
     "positionSolBanane": [],
@@ -189,15 +189,15 @@
     "vitalite": {
         "Energie": {
             "-": 3,
-            "Stock": 70
+            "Stock": 10
         },
         "Hydratation": {
             "-": 2,
-            "Stock": 80
+            "Stock": 40
         },
         "Satiete": {
             "-": 2,
-            "Stock": 80
+            "Stock": 40
         }
     }
 }

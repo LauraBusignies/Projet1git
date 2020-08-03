@@ -119,7 +119,7 @@
             "Utilité": "Satiete",
             "message": "Vous avez jettez un Ananas",
             "nom": "Ananas",
-            "nombre": 0,
+            "nombre": 3,
             "positionX": null,
             "positionY": null
         },
@@ -189,11 +189,11 @@
     "vitalite": {
         "Energie": {
             "-": 3,
-            "Stock": 10
+            "Stock": 100
         },
         "Hydratation": {
             "-": 2,
-            "Stock": 100
+            "Stock": 10
         },
         "Satiete": {
             "-": 2,

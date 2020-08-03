@@ -19,6 +19,7 @@ def key():
     print("                (   ()   ______________█     | ")
     print("                \______/               |_||_|")
     time.sleep(2.5)
+
 #règles du jeu
 def rules_mystery_number():
     print("_____________________________________________________________________________________________________________________\n")
@@ -65,22 +66,18 @@ def victory_or_defeat(victory, adventurer_number, mystery_number, counter_game, 
     if  int(adventurer_number) == mystery_number :
         print()
         print(f"Bravo tu as gagné le niveau {counter_game} ")
-        #time.sleep(2.0)
+        time.sleep(2.0)
     else : 
         print()
         print(f"Perdu ! Tu as utilisé tes {try_number} essaies. Tu dois recommencer ! 凸(^_^)凸")
+        
         victory = False
-        #time.sleep(1.5)
+        time.sleep(1.5)
     return victory
 
-# Clear la console
+
 def clear():
-    os.system('cls') #pour Windows
-
-# Assemblement des fonction
-
-# Variables global
-
+    os.system('cls') 
 
 def mainMystereGame():
     
@@ -97,7 +94,7 @@ def mainMystereGame():
         yes_or_no=input("Tant que tu ne diras pas oui, on sera coincé ici !").lower()
     while counter_game != 3 :
         for loop in range (3) :
-            mystery_number = random.randint(0, 100)
+            mystery_number = random.randint(50, 53)
             try_number = random.randint(5,10)
             counter_game += 1
 
@@ -113,12 +110,12 @@ def mainMystereGame():
                 print(f"Tu auras {try_number} essaies !\n")
             else :
                 print(f"Tu vas commencer le {counter_game}ème NOMBRE MYSTERIEUX ")
-                #time.sleep(1.5)
+                time.sleep(1.5)
                 print("Le sphinx choisis combien tu auras d'essai pour ce test")
-                #time.sleep(1.5)
+                time.sleep(1.5)
                 gardian.sphinx()
                 print("Suspense ...")
-                #time.sleep(1.5)
+                time.sleep(1.5)
                 print(f"Tu auras {try_number} essaies !\n")
             
             adventurer_number, counter, total_counter = game(adventurer_number, counter, mystery_number, total_counter, try_number)
