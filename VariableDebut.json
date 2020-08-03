@@ -189,7 +189,7 @@
     "vitalite": {
         "Energie": {
             "-": 3,
-            "Stock": 100
+            "Stock": 10
         },
         "Hydratation": {
             "-": 2,

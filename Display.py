@@ -1,5 +1,5 @@
 import Variable
-import message
+import FonctionPrint
 import Utilities
 import Nourriture
 
@@ -45,11 +45,11 @@ def map1():
     Utilities.displayvitalite()
     print()
     Utilities.enigmeMystereCesarSinge ()
-    message.arbre()
-    message.bougerArbre()
-    message.ramasserFruit()
+    FonctionPrint.arbre()
+    FonctionPrint.bougerArbre()
+    FonctionPrint.ramasserFruit()
     Utilities.finish()
     if Variable.tricheur == False :
-        message.die()
+        FonctionPrint.die()
 
     

@@ -4,7 +4,7 @@ import Display
 import random
 import time
 import enigme
-import message
+import FonctionPrint
 import sys
 import json
 
@@ -32,12 +32,16 @@ def finish():
             print("Vous devez avoir votre bouteille et votre couteau pour prendre cette porte")
         else :
             clear()
-            message.victory()
-            Variable.var_enregistrer['resultatJeu'] = 'Gagné'
+            FonctionPrint.victory()
+            Variable.var_enregistrer['resultatJeu'] = 'Victoire'
             Variable.var_enregistrer['date'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-            with open("Historique.json", "r", encoding="utf-8") as MyFile:
-                Variable.dicHistorique = json.load(MyFile)
-            Variable.dicHistorique[f'joueur{Variable.var_enregistrer["compteurHistorique"]}'] = [Variable.var_enregistrer['nomAventurier'],
+            try :
+                with open("Historique.json", "r", encoding="utf-8") as MyFile:
+                    Variable.dicHistorique = json.load(MyFile)
+            except : 
+                pass
+            Variable.dicHistorique['compteurHistorique'] += 1
+            Variable.dicHistorique[f'joueur{Variable.dicHistorique["compteurHistorique"]}'] = [Variable.var_enregistrer['nomAventurier'],
                                 Variable.var_enregistrer['resultatJeu'],
                                 Variable.var_enregistrer['nombreAction'],
                                 Variable.var_enregistrer['nombreDeplacement'],
@@ -45,6 +49,13 @@ def finish():
                                 Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
                                 Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
                                 Variable.var_enregistrer['date']]
+            compteur = -1
+            for k in Variable.dicHistorique :
+                compteur += 1
+            if compteur == 11 :
+                for k in Variable.dicHistorique :
+                    del Variable.dicHistorique[k]
+                    break
             with open("Historique.json", "w", encoding="utf-8") as MyFile:
                 json.dump(Variable.dicHistorique, MyFile, sort_keys = True, indent = 4, ensure_ascii = False)
             time.sleep(3.0)
@@ -253,7 +264,7 @@ def sleep():
             Variable.var_enregistrer["vitalite"]["Hydratation"]["Stock"] -= 2
             Variable.var_enregistrer["vitalite"]["Satiete"]["Stock"] -= 1
             if Variable.var_enregistrer["vitalite"]["Hydratation"]["Stock"] <= 0 or Variable.var_enregistrer["vitalite"]["Satiete"]["Stock"] <= 0 :
-                message.die()
+                FonctionPrint.die()
                 break
 
             if Variable.var_enregistrer["vitalite"]["Energie"]["Stock"] > 100 :
@@ -265,6 +276,48 @@ def sleep():
         print("Vous dormirez plus tard ")
         time.sleep(1.5)
 
+def historique():
+    
+    validation = input("Veux tu voir l'historique des anciennes parties ? ").lower()
+    print()
+    if validation == "oui" :
+        clear()
+        with open("Historique.json", "r", encoding="utf-8") as MyFile:
+            Variable.dicHistorique = json.load(MyFile)
 
-#def victoire ():
+        print(" ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————")
+        print("| Nom du Joueur |   Resultat    |   nbAction    | nbDeplacement |    Energie    |    Satiété    |  Hydratation  |          Date          |")
+        print(" ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————")
+        espace = " "
+
+        for k in Variable.dicHistorique :
+            ligne = "|"
+            compteur = 0
+
+            try :
+                while compteur != 7 :
+                    
+                        variable = len(str(Variable.dicHistorique[k][compteur]))
+                        espace = (15 - variable)// 2
+                        espace1 = " " * espace
+                        espace2 = " " * espace
+                        if variable % 2 == 0 :
+                            espace2 = " " * (espace +1)
+                        if Variable.dicHistorique[k][compteur] == "Defaite" :
+                            Variable.dicHistorique[k][compteur] = "\u001b[38;5;1mDefaite\033[0m"
+                        elif Variable.dicHistorique[k][compteur] == "Victoire" :
+                            Variable.dicHistorique[k][compteur] = "\u001b[38;5;82mVictoire\033[0m"
+                        ligne = f'{ligne}{espace1}{Variable.dicHistorique[k][compteur]}{espace2}|'
+                        compteur += 1
+                print (f'{ligne}  {Variable.dicHistorique[k][7]}   |')
+                print(" ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————")
+            except :
+                    compteur = 7
+            
+            
+    suite = input("Veux tu commencer le jeu ? ").lower()
+    if suite == "oui" :
+        pass
+    else : 
+        sys.exit(0)
 

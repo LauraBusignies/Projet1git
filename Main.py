@@ -3,14 +3,14 @@ import Utilities
 import Variable
 import DeplacementJ
 import time
-import message
+import FonctionPrint
 
 
 
 if __name__ == "__main__":
 
 
-    message.start()
+    FonctionPrint.start()
     while Variable.var_enregistrer['positionJoueur'][0] != 0 :
 
         Utilities.clear()

@@ -3,7 +3,7 @@ import time
 import os
 import random
 import Utilities
-import message
+import FonctionPrint
 import json
 import sys
 
@@ -79,7 +79,7 @@ def ZQSD ():
                 Variable.var_enregistrer['nombreDeplacement'] += 1
             
     if Variable.deplacement == "i":
-        message.displaySac()
+        FonctionPrint.displaySac()
         Variable.var_enregistrer['nombreAction'] += 1
 
     if Variable.deplacement == "a" :

@@ -144,7 +144,7 @@ def die():
         print("                     \.    ^    ./   ")
 
         print()
-        Variable.var_enregistrer['resultatJeu'] = 'Perdu'
+        Variable.var_enregistrer['resultatJeu'] = 'Defaite'
         Variable.var_enregistrer['date'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
         try :
             with open("Historique.json", "r", encoding="utf-8") as MyFile:
@@ -160,8 +160,23 @@ def die():
                             Variable.var_enregistrer['vitalite']['Satiete']['Stock'],
                             Variable.var_enregistrer['vitalite']['Hydratation']['Stock'],
                             Variable.var_enregistrer['date']]
-        # listeHistorique =[]
-        # for k in 
+        compteur = -1
+        for k in Variable.dicHistorique :
+            compteur += 1
+        if compteur >= 10 :
+            listeHistorique = []
+            try :
+                for k in Variable.dicHistorique:
+                    listeHistorique.append(Variable.dicHistorique[k][7])
+
+                listeHistorique.sort()
+                print(Variable.dicHistorique)
+                for k in Variable.dicHistorique :
+                    if Variable.dicHistorique[k][7] == listeHistorique[0] :
+                        del Variable.dicHistorique[k]
+                        break
+            except :
+                pass
         with open("Historique.json", "w", encoding="utf-8") as MyFile:
             json.dump(Variable.dicHistorique, MyFile, sort_keys = True, indent = 4, ensure_ascii = False)
         
@@ -188,7 +203,7 @@ def victory ():
 
 
 
-def start():
+def welcome():
     print("  ____  _                                                               _              _           ")
     print(" |  _ \(_)                                          /\                 | |            (_)          ")
     print(" | |_) |_  ___ _ ____   _____ _ __  _   _  ___     /  \__   _____ _ __ | |_ _   _ _ __ _  ___ _ __ ")
@@ -196,6 +211,12 @@ def start():
     print(" | |_) | |  __/ | | \ V /  __/ | | | |_| |  __/  / ____ \ V /  __/ | | | |_| |_| | |  | |  __/ |   ")
     print(" |____/|_|\___|_| |_|\_/ \___|_| |_|\__,_|\___| /_/    \_\_/ \___|_| |_|\__|\__,_|_|  |_|\___|_|  ")
     print()
+
+def start():
+    welcome()
+    Utilities.historique()
+    Utilities.clear()
+    welcome()
     with open("Enregistrement.json", "r", encoding="utf-8") as MyFile:
         Variable.var_enregistrer = json.load(MyFile)
     if Variable.var_enregistrer['leave'] == True :
@@ -203,9 +224,11 @@ def start():
         if validation == "oui" :
             print("Te revoilà ",Variable.var_enregistrer['nomAventurier'])
             time.sleep(1.5)
+        else :
+            with open("VariableDebut.json", "r", encoding="utf-8") as MyFile:
+                Variable.var_enregistrer = json.load(MyFile)   
+            Variable.var_enregistrer['nomAventurier'] = input('Quel est ton nom ? ').capitalize()
     else : 
         with open("VariableDebut.json", "r", encoding="utf-8") as MyFile:
-            Variable.var_enregistrer = json.load(MyFile)     
+            Variable.var_enregistrer = json.load(MyFile)    
         Variable.var_enregistrer['nomAventurier'] = input('Quel est ton nom ? ').capitalize()
-    # while Variable.var_enregistrer['nomAventurier'].isalpha == True :
-    #     Variable.var_enregistrer['nomAventurier'] = input('Seulement des lettres ').capitalize()
