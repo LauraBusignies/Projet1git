@@ -106,23 +106,25 @@ def ramasserFruit():
 
 #print le sac a dos
 def displaySac():
-     
-    Utilities.clear()
-    Variable.contenuInventaire = []
-    # Mettre les item du dictionnaire sac a dos dans une liste pour pouvoir les print
-    def VisuelSac(contenuSac):
-        for k in Variable.var_enregistrer['sac_a_dos']:
-            if Variable.var_enregistrer['sac_a_dos'][k]['nombre'] > 0 :
-                # Pour chaque objet dans l'inventaire, j'ajoute à ma liste nom de l'objet avec sa quantité
-                contenuSac.append(f"{Variable.var_enregistrer['sac_a_dos'][k]['nom']} * {Variable.var_enregistrer['sac_a_dos'][k]['nombre']}")
-                Variable.contenuInventaire.append(Variable.var_enregistrer['sac_a_dos'][k]['nom'])
-        return contenuSac
-    
-    contenuSac = []
-    contenuSac = VisuelSac(contenuSac)
-    # print le sac a dos 
+
     action = ""
     while action != "l" :
+        Utilities.clear()
+        Variable.contenuInventaire = []
+        # Mettre les item du dictionnaire sac a dos dans une liste pour pouvoir les print
+        def VisuelSac(contenuSac):
+            for k in Variable.var_enregistrer['sac_a_dos']:
+                if Variable.var_enregistrer['sac_a_dos'][k]['nombre'] > 0 :
+                    # Pour chaque objet dans l'inventaire, j'ajoute à ma liste nom de l'objet avec sa quantité
+                    contenuSac.append(f"{Variable.var_enregistrer['sac_a_dos'][k]['nom']} * {Variable.var_enregistrer['sac_a_dos'][k]['nombre']}")
+                    Variable.contenuInventaire.append(Variable.var_enregistrer['sac_a_dos'][k]['nom'])
+            return contenuSac
+        
+        contenuSac = []
+        contenuSac = VisuelSac(contenuSac)
+        # print le sac a dos 
+
+
         print("\n              ▓▓▓▓▓▓▓▓▓▓▓▓▓")
         print("             ▓▓           ▓▓")
         print("            ▓▓             ▓▓")

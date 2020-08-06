@@ -1,10 +1,11 @@
 {
-    "ancienCaractere": "",
+    "ancienCaractere": "\u001b[38;5;0m \u001b[0m",
     "leave": true,
+    "listeHistorique": 0,
     "nbKey": 0,
-    "nomAventurier": "Laura",
-    "nombreAction": 0,
-    "nombreDeplacement": 30,
+    "nomAventurier": "Alain",
+    "nombreAction": 1,
+    "nombreDeplacement": 25,
     "objetRamasser": "",
     "positionArbreAnanas": [
         7,
@@ -104,8 +105,8 @@
     ],
     "positionEnigme": [],
     "positionJoueur": [
-        11,
-        59
+        13,
+        62
     ],
     "positionSolAnanas": [],
     "positionSolBanane": [],
@@ -119,7 +120,7 @@
             "Utilité": "Satiete",
             "message": "Vous avez jettez un Ananas",
             "nom": "Ananas",
-            "nombre": 0,
+            "nombre": 3,
             "positionX": null,
             "positionY": null
         },
@@ -189,11 +190,11 @@
     "vitalite": {
         "Energie": {
             "-": 3,
-            "Stock": 10
+            "Stock": 85
         },
         "Hydratation": {
             "-": 2,
-            "Stock": 40
+            "Stock": 30
         },
         "Satiete": {
             "-": 2,

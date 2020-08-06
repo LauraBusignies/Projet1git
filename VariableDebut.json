@@ -194,7 +194,7 @@
         },
         "Hydratation": {
             "-": 2,
-            "Stock": 10
+            "Stock": 100
         },
         "Satiete": {
             "-": 2,
